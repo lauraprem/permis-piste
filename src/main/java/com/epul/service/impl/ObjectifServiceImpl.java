@@ -20,4 +20,13 @@ public class ObjectifServiceImpl implements IObjectifService {
     public List<Objectif> getAllObjectif() {
         return objectifDao.findAll();
     }
+
+    /**
+     * Récupérer un objectif grace a son id
+     * @param id de l'objectif a recuperer
+     * @return l'objectif correspondant a l'id
+     */
+    public Objectif getObjectif(int id){
+        return objectifDao.findOne(id);
+    }
 }

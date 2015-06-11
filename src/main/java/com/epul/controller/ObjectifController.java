@@ -9,10 +9,7 @@ import com.epul.service.IObjectifService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +29,18 @@ public class ObjectifController {
     @ResponseStatus(HttpStatus.OK)
     public List<Objectif> getAllApprenant() {
         return objectifService.getAllObjectif();
+    }
+
+    /**
+     * Récupérer un objectif grace a son id
+     * @param id de l'objectif a recuperer
+     * @return l'objectif correspondant a l'id
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public Objectif getObjectif(@PathVariable int id){
+        return objectifService.getObjectif(id);
     }
 
 }
