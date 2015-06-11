@@ -28,7 +28,6 @@ public class ApprenantController {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<Apprenant> getAllApprenant() {
-		System.out.println("Je passe dans le controleur");
 		return apprenantService.getAllApprenant();
 	}
 
