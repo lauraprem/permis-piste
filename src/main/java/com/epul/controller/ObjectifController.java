@@ -43,4 +43,29 @@ public class ObjectifController {
         return objectifService.getObjectif(id);
     }
 
+    /**
+     * Ajouter un objectif a la base de données (l'id est mis en place selon le dernier ID en BDD)
+     * @param objectif a ajouter
+     * @return true si l'ajout a fonctionné false sinon
+     */
+    @RequestMapping(value="/", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean addObjectif(@RequestBody Objectif objectif){
+        System.out.println("je passe dans l'ajout");
+        System.out.println("j'ajoute ça: " + objectif.toString());
+        return objectifService.addApprenant(objectif);
+    }
+
+    /**
+     * Supprimer un objectif grace a son id
+     * @param id de l'objectif a supprimer
+     * @return true si la suppression a fonctionné, false sinon
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public boolean suppressObjectif(@PathVariable int id){
+        return objectifService.suppressApprenant(id);
+    }
 }

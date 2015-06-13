@@ -29,4 +29,21 @@ public class ObjectifServiceImpl implements IObjectifService {
     public Objectif getObjectif(int id){
         return objectifDao.findOne(id);
     }
+
+    @Override
+    public boolean suppressApprenant(int id) {
+        objectifDao.delete(id);
+        return true;
+    }
+
+    @Override
+    public boolean addApprenant(Objectif objectif) {
+        objectifDao.save(objectif);
+        return false;
+    }
+
+    @Override
+    public boolean modifyApprenant(Objectif objectif) {
+        return false;
+    }
 }
