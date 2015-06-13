@@ -21,13 +21,13 @@ public class ObjectifController {
     private IObjectifService objectifService;
 
     /**
-     * récupérer la liste de tous les apprenant
-     * @return liste des apprenant
+     * récupérer la liste de tous les objectif
+     * @return liste des objectif
      */
     @RequestMapping(value = "/", method = RequestMethod.GET, produces ={"application/json"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public List<Objectif> getAllApprenant() {
+    public List<Objectif> getAllObjectif() {
         return objectifService.getAllObjectif();
     }
 
@@ -41,6 +41,34 @@ public class ObjectifController {
     @ResponseStatus(HttpStatus.OK)
     public Objectif getObjectif(@PathVariable int id){
         return objectifService.getObjectif(id);
+    }
+
+    /**
+     * Supprimer un objectif grace a son id
+     * @param id de l'objectif a supprimer
+     * @return true si la suppression a fonctionné, false sinon
+     */
+    public boolean suppressObjectif(int id){
+        return false;
+    }
+
+    /**
+     * Ajouter un objectif a la base de données (l'id est mis en place selon le dernier ID en BDD)
+     * @param objectif a ajouter
+     * @return true si l'ajout a fonctionné false sinon
+     */
+    public boolean addObjectif(Objectif objectif){
+        return false;
+    }
+
+    /**
+     * Modifie l'objectif possedant cet ID avec les nouvelles informations
+     * Si l'ID n'existe pas en BDD, on ne fait rien
+     * @param objectif l'objectif modifié
+     * @return true si a modification a eu lieu, false sinon
+     */
+    public boolean modifyObjectif(Objectif objectif){
+        return false;
     }
 
 }
