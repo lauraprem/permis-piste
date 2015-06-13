@@ -38,7 +38,7 @@ public interface IIndicateurService {
     /**
      * Modifie l'indicateur possedant cet ID avec les nouvelles informations
      * Si l'ID n'existe pas en BDD, on ne fait rien
-     * @param indicateur l'apprenant modifié
+     * @param indicateur l'indicateur modifié
      * @return true si a modification a eu lieu, false sinon
      */
     public boolean modifyIndicateur(Indicateur indicateur);
