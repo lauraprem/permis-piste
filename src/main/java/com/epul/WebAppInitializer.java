@@ -25,7 +25,8 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
         FilterRegistration corsFilter = servletContext.addFilter("cors", CORSFilter.class);
         corsFilter.addMappingForUrlPatterns(null, false, "/*");
-        corsFilter.setInitParameter("cors.allowOrigin", "http://localhost:4991");
+        /*corsFilter.setInitParameter("cors.allowOrigin", "http://localhost:4991");*/
+        corsFilter.setInitParameter("cors.allowOrigin", "*");
         corsFilter.setInitParameter("cors.supportedMethods", "OPTIONS, GET, POST, PUT, DELETE, HEAD");
         corsFilter.setInitParameter("cors.supportedHeaders", "Accept, Content-Type");
 

@@ -32,12 +32,14 @@ public class ObjectifServiceImpl implements IObjectifService {
 
     @Override
     public boolean suppressObjectif(int id) {
-        return false;
+        objectifDao.delete(id);
+        return true;
     }
 
     @Override
     public boolean addObjectif(Objectif objectif) {
-        return false;
+        objectifDao.save(objectif);
+        return true;
     }
 
     @Override

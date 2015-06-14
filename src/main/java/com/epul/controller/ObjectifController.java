@@ -44,31 +44,26 @@ public class ObjectifController {
     }
 
     /**
-     * Supprimer un objectif grace a son id
-     * @param id de l'objectif a supprimer
-     * @return true si la suppression a fonctionné, false sinon
-     */
-    public boolean suppressObjectif(int id){
-        return false;
-    }
-
-    /**
      * Ajouter un objectif a la base de données (l'id est mis en place selon le dernier ID en BDD)
      * @param objectif a ajouter
      * @return true si l'ajout a fonctionné false sinon
      */
-    public boolean addObjectif(Objectif objectif){
-        return false;
+    @RequestMapping(value="/", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean addObjectif(@RequestBody Objectif objectif){
+        return objectifService.addObjectif(objectif);
     }
 
     /**
-     * Modifie l'objectif possedant cet ID avec les nouvelles informations
-     * Si l'ID n'existe pas en BDD, on ne fait rien
-     * @param objectif l'objectif modifié
-     * @return true si a modification a eu lieu, false sinon
+     * Supprimer un objectif grace a son id
+     * @param id de l'objectif a supprimer
+     * @return true si la suppression a fonctionné, false sinon
      */
-    public boolean modifyObjectif(Objectif objectif){
-        return false;
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean suppressObjectif(@PathVariable int id){
+        return objectifService.suppressObjectif(id);
     }
-
 }

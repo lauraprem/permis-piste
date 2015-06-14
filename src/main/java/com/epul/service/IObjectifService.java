@@ -39,7 +39,7 @@ public interface IObjectifService {
     /**
      * Modifie l'objectif possedant cet ID avec les nouvelles informations
      * Si l'ID n'existe pas en BDD, on ne fait rien
-     * @param objectif l'apprenant modifié
+     * @param objectif l'objectif modifié
      * @return true si a modification a eu lieu, false sinon
      */
     public boolean modifyObjectif(Objectif objectif);
