@@ -23,24 +23,24 @@ public interface IObjectifService {
     Objectif getObjectif(int id);
 
     /**
-     * Supprimer un apprenant grace a son id
-     * @param id de l'apprenant a supprimer
+     * Supprimer un objectif grace a son id
+     * @param id de l'objectif a supprimer
      * @return true si la suppression a fonctionné, false sinon
      */
-    public boolean suppressApprenant(int id);
+    public boolean suppressObjectif(int id);
 
     /**
      * Ajouter un objectif a la base de données (l'id est mis en place selon le dernier ID en BDD)
      * @param objectif a ajouter
      * @return true si l'ajout a fonctioné false sinon
      */
-    public boolean addApprenant(Objectif objectif);
+    public boolean addObjectif(Objectif objectif);
 
     /**
      * Modifie l'objectif possedant cet ID avec les nouvelles informations
      * Si l'ID n'existe pas en BDD, on ne fait rien
-     * @param objectif l'apprenant modifié
+     * @param objectif l'objectif modifié
      * @return true si a modification a eu lieu, false sinon
      */
-    public boolean modifyApprenant(Objectif objectif);
+    public boolean modifyObjectif(Objectif objectif);
 }

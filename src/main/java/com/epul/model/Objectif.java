@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 public class Objectif {
     private int numobjectif;
-    private String libobectif;
+    private String libobjectif;
 
     @Id
     @Column(name = "NUMOBJECTIF")
@@ -25,13 +25,13 @@ public class Objectif {
     }
 
     @Basic
-    @Column(name = "LIBOBECTIF")
-    public String getLibobectif() {
-        return libobectif;
+    @Column(name = "LIBOBJECTIF")
+    public String getLibobjectif() {
+        return libobjectif;
     }
 
-    public void setLibobectif(String libobectif) {
-        this.libobectif = libobectif;
+    public void setLibobjectif(String libobjectif) {
+        this.libobjectif = libobjectif;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Objectif {
         Objectif objectif = (Objectif) o;
 
         if (numobjectif != objectif.numobjectif) return false;
-        if (libobectif != null ? !libobectif.equals(objectif.libobectif) : objectif.libobectif != null) return false;
+        if (libobjectif != null ? !libobjectif.equals(objectif.libobjectif) : objectif.libobjectif != null) return false;
 
         return true;
     }
@@ -50,7 +50,7 @@ public class Objectif {
     @Override
     public int hashCode() {
         int result = numobjectif;
-        result = 31 * result + (libobectif != null ? libobectif.hashCode() : 0);
+        result = 31 * result + (libobjectif != null ? libobjectif.hashCode() : 0);
         return result;
     }
 }

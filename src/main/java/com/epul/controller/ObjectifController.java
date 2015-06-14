@@ -52,9 +52,7 @@ public class ObjectifController {
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public boolean addObjectif(@RequestBody Objectif objectif){
-        System.out.println("je passe dans l'ajout");
-        System.out.println("j'ajoute ça: " + objectif.toString());
-        return objectifService.addApprenant(objectif);
+        return objectifService.addObjectif(objectif);
     }
 
     /**
@@ -64,8 +62,8 @@ public class ObjectifController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean suppressObjectif(@PathVariable int id){
-        return objectifService.suppressApprenant(id);
+        return objectifService.suppressObjectif(id);
     }
 }
