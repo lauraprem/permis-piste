@@ -1,9 +1,11 @@
 package com.epul;
 
+import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+import com.thetransactioncompany.cors.CORSFilter;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.XmlWebApplicationContext;
@@ -20,6 +22,13 @@ public class WebAppInitializer implements WebApplicationInitializer {
         appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-pool-bonecp", "resthub-web-server");
         String[] locations = { "classpath*:resthubContext.xml", "classpath*:applicationContext.xml" };
         appContext.setConfigLocations(locations);
+
+        FilterRegistration corsFilter = servletContext.addFilter("cors", CORSFilter.class);
+        corsFilter.addMappingForUrlPatterns(null, false, "/*");
+        /*corsFilter.setInitParameter("cors.allowOrigin", "http://localhost:4991");*/
+        corsFilter.setInitParameter("cors.allowOrigin", "*");
+        corsFilter.setInitParameter("cors.supportedMethods", "OPTIONS, GET, POST, PUT, DELETE, HEAD");
+        corsFilter.setInitParameter("cors.supportedHeaders", "Accept, Content-Type");
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(appContext));
         dispatcher.setLoadOnStartup(1);
