@@ -15,12 +15,6 @@ public class ApprenantServiceImpl implements IApprenantService {
 	@Autowired
 	private IApprenantDao apprenantDAO;
 
-	
-	
-//	public IApprenantDao getApprenantDAO() {
-//		return apprenantDAO;
-//	}
-
 	public void setApprenantDAO(IApprenantDao apprenantDAO) {
 		this.apprenantDAO = apprenantDAO;
 	}
@@ -32,26 +26,16 @@ public class ApprenantServiceImpl implements IApprenantService {
 
 	@Override
 	public Apprenant getApprenant(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return apprenantDAO.findOne(id);
 	}
 
 	@Override
-	public boolean suppressApprenant(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public void suppressApprenant(int id) {
+		 apprenantDAO.delete(id);
 	}
 
 	@Override
-	public boolean addApprenant(Apprenant apprenant) {
-		// TODO Auto-generated method stub
-		return false;
+	public void addOrModifyApprenant(Apprenant apprenant) {
+		apprenantDAO.save(apprenant);
 	}
-
-	@Override
-	public boolean modifyApprenant(Apprenant apprenant) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

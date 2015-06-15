@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,7 +30,6 @@ public class ApprenantController {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<Apprenant> getAllApprenant() {
-		System.out.println("Je passe dans le controleur");
 		return apprenantService.getAllApprenant();
 	}
 
@@ -37,8 +38,11 @@ public class ApprenantController {
 	 * @param id de l'apprenant a recuperer
 	 * @return l'apprenant correspondant a l'id
 	 */
-	public Apprenant getApprenant(int id){
-		return null;
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces ={"application/json"})
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public Apprenant getApprenant(@PathVariable int id){
+		return apprenantService.getApprenant(id);
 	}
 
 	/**
@@ -46,8 +50,11 @@ public class ApprenantController {
 	 * @param id de l'apprenant a supprimer
 	 * @return true si la suppression a fonctionné, false sinon
 	 */
-	public boolean suppressApprenant(int id){
-		return false;
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces ={"application/json"})
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public void suppressApprenant(@PathVariable int id){
+		apprenantService.suppressApprenant(id);
 	}
 
 	/**
@@ -55,8 +62,12 @@ public class ApprenantController {
 	 * @param apprenant a ajouter
 	 * @return true si l'ajout a fonctioné false sinon
 	 */
-	public boolean addApprenant(Apprenant apprenant){
-		return false;
+	@RequestMapping(value = "/", method = RequestMethod.POST ,  produces ={"application/json"})
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public void addApprenant(@ModelAttribute Apprenant apprenant){
+		System.out.println("addApprenant");
+		apprenantService.addOrModifyApprenant(apprenant);
 	}
 
 	/**
