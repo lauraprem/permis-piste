@@ -46,8 +46,11 @@ public class RegleController {
      * @param id de la regle a supprimer
      * @return true si la suppression a fonctionné, false sinon
      */
-    public boolean suppressRegle(int id){
-        return false;
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean suppressRegle(@PathVariable int id){
+        return regleService.suppressRegle(id);
     }
 
     /**
@@ -55,8 +58,11 @@ public class RegleController {
      * @param regle a ajouter
      * @return true si l'ajout a fonctioné false sinon
      */
-    public boolean addRegle(Regle regle){
-        return false;
+    @RequestMapping(value="/", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean addRegle(@RequestBody Regle regle){
+        return regleService.addRegle(regle);
     }
 
     /**

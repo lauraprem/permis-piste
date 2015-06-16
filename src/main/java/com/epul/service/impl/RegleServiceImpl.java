@@ -29,12 +29,14 @@ public class RegleServiceImpl implements IRegleService {
 
     @Override
     public boolean suppressRegle(int id) {
-        return false;
+        regleDao.delete(id);
+        return true;
     }
 
     @Override
     public boolean addRegle(Regle regle) {
-        return false;
+        regleDao.save(regle);
+        return true;
     }
 
     @Override
