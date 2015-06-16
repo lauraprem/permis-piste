@@ -1,19 +1,18 @@
 package com.epul.model;
 
-
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 @Entity
 public class Mission {
     private int nummission;
     private int numjeu;
     private String libmission;
+    private Collection<Fixe> fixesByNummission;
+    private Jeu jeuByNumjeu;
 
     @Id
     @Column(name = "NUMMISSION")
@@ -52,8 +51,8 @@ public class Mission {
 
         Mission mission = (Mission) o;
 
-        if (nummission != mission.nummission) return false;
         if (numjeu != mission.numjeu) return false;
+        if (nummission != mission.nummission) return false;
         if (libmission != null ? !libmission.equals(mission.libmission) : mission.libmission != null) return false;
 
         return true;
@@ -65,5 +64,24 @@ public class Mission {
         result = 31 * result + numjeu;
         result = 31 * result + (libmission != null ? libmission.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "missionByNummission")
+    public Collection<Fixe> getFixesByNummission() {
+        return fixesByNummission;
+    }
+
+    public void setFixesByNummission(Collection<Fixe> fixesByNummission) {
+        this.fixesByNummission = fixesByNummission;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMJEU", referencedColumnName = "NUMJEU", nullable = false, insertable=false, updatable = false)
+    public Jeu getJeuByNumjeu() {
+        return jeuByNumjeu;
+    }
+
+    public void setJeuByNumjeu(Jeu jeuByNumjeu) {
+        this.jeuByNumjeu = jeuByNumjeu;
     }
 }

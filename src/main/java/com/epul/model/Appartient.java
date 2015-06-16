@@ -1,19 +1,17 @@
 package com.epul.model;
 
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 @Entity
 @IdClass(AppartientPK.class)
 public class Appartient {
     private int numjeu;
     private int numaction;
+    private Action actionByNumaction;
+    private Jeu jeuByNumjeu;
 
     @Id
     @Column(name = "NUMJEU")
@@ -42,8 +40,8 @@ public class Appartient {
 
         Appartient that = (Appartient) o;
 
-        if (numjeu != that.numjeu) return false;
         if (numaction != that.numaction) return false;
+        if (numjeu != that.numjeu) return false;
 
         return true;
     }
@@ -53,5 +51,25 @@ public class Appartient {
         int result = numjeu;
         result = 31 * result + numaction;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMACTION", referencedColumnName = "NUMACTION", nullable = false, insertable=false, updatable = false)
+    public Action getActionByNumaction() {
+        return actionByNumaction;
+    }
+
+    public void setActionByNumaction(Action actionByNumaction) {
+        this.actionByNumaction = actionByNumaction;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMJEU", referencedColumnName = "NUMJEU", nullable = false, insertable=false, updatable = false)
+    public Jeu getJeuByNumjeu() {
+        return jeuByNumjeu;
+    }
+
+    public void setJeuByNumjeu(Jeu jeuByNumjeu) {
+        this.jeuByNumjeu = jeuByNumjeu;
     }
 }

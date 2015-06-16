@@ -1,12 +1,10 @@
 package com.epul.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 @Entity
 public class Action {
@@ -14,6 +12,13 @@ public class Action {
     private Integer actNumaction;
     private String libaction;
     private Integer scoremin;
+    private Action actionByActNumaction;
+    private Collection<Action> actionsByNumaction;
+    private Collection<Appartient> appartientsByNumaction;
+    private Collection<EstAssocie> estAssociesByNumaction;
+    private Collection<Indicateur> indicateursByNumaction;
+    private Collection<Obtient> obtientsByNumaction;
+    private Collection<Possede> possedesByNumaction;
 
     @Id
     @Column(name = "NUMACTION")
@@ -25,7 +30,6 @@ public class Action {
         this.numaction = numaction;
     }
 
-    @Basic
     @Column(name = "ACT_NUMACTION")
     public Integer getActNumaction() {
         return actNumaction;
@@ -78,5 +82,50 @@ public class Action {
         result = 31 * result + (libaction != null ? libaction.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "actionByNumaction", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<Appartient> getAppartientsByNumaction() {
+        return appartientsByNumaction;
+    }
+
+    public void setAppartientsByNumaction(Collection<Appartient> appartientsByNumaction) {
+        this.appartientsByNumaction = appartientsByNumaction;
+    }
+
+    @OneToMany(mappedBy = "actionByNumaction", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<EstAssocie> getEstAssociesByNumaction() {
+        return estAssociesByNumaction;
+    }
+
+    public void setEstAssociesByNumaction(Collection<EstAssocie> estAssociesByNumaction) {
+        this.estAssociesByNumaction = estAssociesByNumaction;
+    }
+
+    @OneToMany(mappedBy = "actionByNumaction", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<Indicateur> getIndicateursByNumaction() {
+        return indicateursByNumaction;
+    }
+
+    public void setIndicateursByNumaction(Collection<Indicateur> indicateursByNumaction) {
+        this.indicateursByNumaction = indicateursByNumaction;
+    }
+
+    @OneToMany(mappedBy = "actionByNumaction", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<Obtient> getObtientsByNumaction() {
+        return obtientsByNumaction;
+    }
+
+    public void setObtientsByNumaction(Collection<Obtient> obtientsByNumaction) {
+        this.obtientsByNumaction = obtientsByNumaction;
+    }
+
+    @OneToMany(mappedBy = "actionByNumaction", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<Possede> getPossedesByNumaction() {
+        return possedesByNumaction;
+    }
+
+    public void setPossedesByNumaction(Collection<Possede> possedesByNumaction) {
+        this.possedesByNumaction = possedesByNumaction;
     }
 }

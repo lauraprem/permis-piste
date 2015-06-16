@@ -1,12 +1,11 @@
 package com.epul.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 public class AppartientPK implements Serializable {
     private int numjeu;
@@ -39,8 +38,8 @@ public class AppartientPK implements Serializable {
 
         AppartientPK that = (AppartientPK) o;
 
-        if (numjeu != that.numjeu) return false;
         if (numaction != that.numaction) return false;
+        if (numjeu != that.numjeu) return false;
 
         return true;
     }

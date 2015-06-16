@@ -1,19 +1,17 @@
 package com.epul.model;
 
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 @Entity
 @IdClass(PossedePK.class)
 public class Possede {
     private int numaction;
     private int numregle;
+    private Regle regleByNumregle;
+    private Action actionByNumaction;
 
     @Id
     @Column(name = "NUMACTION")
@@ -53,5 +51,25 @@ public class Possede {
         int result = numaction;
         result = 31 * result + numregle;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMREGLE", referencedColumnName = "NUMREGLE", nullable = false, insertable=false, updatable = false)
+    public Regle getRegleByNumregle() {
+        return regleByNumregle;
+    }
+
+    public void setRegleByNumregle(Regle regleByNumregle) {
+        this.regleByNumregle = regleByNumregle;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMACTION", referencedColumnName = "NUMACTION", nullable = false, insertable=false, updatable = false)
+    public Action getActionByNumaction() {
+        return actionByNumaction;
+    }
+
+    public void setActionByNumaction(Action actionByNumaction) {
+        this.actionByNumaction = actionByNumaction;
     }
 }
