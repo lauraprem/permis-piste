@@ -4,6 +4,8 @@ package com.epul.model;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -11,17 +13,18 @@ import javax.persistence.Id;
  */
 @Entity
 public class Apprenant {
-    private int numapprenant;
+    private Integer numapprenant;
     private String nomapprenant;
     private String prenomapprenant;
 
     @Id
     @Column(name = "NUMAPPRENANT")
-    public int getNumapprenant() {
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Integer getNumapprenant() {
         return numapprenant;
     }
 
-    public void setNumapprenant(int numapprenant) {
+    public void setNumapprenant(Integer numapprenant) {
         this.numapprenant = numapprenant;
     }
 

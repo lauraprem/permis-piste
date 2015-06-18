@@ -36,6 +36,7 @@ public class ApprenantServiceImpl implements IApprenantService {
 
 	@Override
 	public void addOrModifyApprenant(Apprenant apprenant) {
+		apprenant.setNumapprenant(null);
 		apprenantDAO.save(apprenant);
 	}
 }
