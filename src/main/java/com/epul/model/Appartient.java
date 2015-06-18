@@ -1,13 +1,18 @@
 package com.epul.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Pierre on 16/06/2015.
  */
 @Entity
-@IdClass(AppartientPK.class)
-public class Appartient {
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+public class Appartient implements Serializable{
     private int numjeu;
     private int numaction;
     private Action actionByNumaction;
@@ -51,25 +56,5 @@ public class Appartient {
         int result = numjeu;
         result = 31 * result + numaction;
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMACTION", referencedColumnName = "NUMACTION", nullable = false, insertable=false, updatable = false)
-    public Action getActionByNumaction() {
-        return actionByNumaction;
-    }
-
-    public void setActionByNumaction(Action actionByNumaction) {
-        this.actionByNumaction = actionByNumaction;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NUMJEU", referencedColumnName = "NUMJEU", nullable = false, insertable=false, updatable = false)
-    public Jeu getJeuByNumjeu() {
-        return jeuByNumjeu;
-    }
-
-    public void setJeuByNumjeu(Jeu jeuByNumjeu) {
-        this.jeuByNumjeu = jeuByNumjeu;
     }
 }

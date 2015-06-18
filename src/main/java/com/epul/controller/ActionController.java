@@ -1,6 +1,7 @@
 package com.epul.controller;
 
 import com.epul.model.Action;
+import com.epul.model.Appartient;
 import com.epul.service.IActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class ActionController {
     @RequestMapping(value = "/", method = RequestMethod.GET, produces ={"application/json"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public List<Action> getAllAction() {
+    public List<Appartient> getAllAction() {
         return actionService.getAllAction();
     }
 

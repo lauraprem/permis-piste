@@ -7,11 +7,10 @@ import java.util.Collection;
  * Created by Pierre on 16/06/2015.
  */
 @Entity
-public class Jeu {
+public class Jeu{
     private int numjeu;
     private String libellejeu;
     private Collection<Appartient> appartientsByNumjeu;
-    private Collection<Mission> missionsByNumjeu;
 
     @Id
     @Column(name = "NUMJEU")
@@ -51,23 +50,5 @@ public class Jeu {
         int result = numjeu;
         result = 31 * result + (libellejeu != null ? libellejeu.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "jeuByNumjeu")
-    public Collection<Appartient> getAppartientsByNumjeu() {
-        return appartientsByNumjeu;
-    }
-
-    public void setAppartientsByNumjeu(Collection<Appartient> appartientsByNumjeu) {
-        this.appartientsByNumjeu = appartientsByNumjeu;
-    }
-
-    @OneToMany(mappedBy = "jeuByNumjeu")
-    public Collection<Mission> getMissionsByNumjeu() {
-        return missionsByNumjeu;
-    }
-
-    public void setMissionsByNumjeu(Collection<Mission> missionsByNumjeu) {
-        this.missionsByNumjeu = missionsByNumjeu;
     }
 }

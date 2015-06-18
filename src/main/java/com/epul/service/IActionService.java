@@ -1,6 +1,7 @@
 package com.epul.service;
 
 import com.epul.model.Action;
+import com.epul.model.Appartient;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface IActionService {
      * récupérer la liste de toutes les actions
      * @return liste des actions
      */
-    List<Action> getAllAction();
+    List<Appartient> getAllAction();
 
     /**
      * Récupérer une action grace a son id

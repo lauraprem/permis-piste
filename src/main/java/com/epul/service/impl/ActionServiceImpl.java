@@ -1,6 +1,7 @@
 package com.epul.service.impl;
 
 import com.epul.model.Action;
+import com.epul.model.Appartient;
 import com.epul.repository.IActionDao;
 import com.epul.service.IActionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class ActionServiceImpl implements IActionService{
     private IActionDao actionDao;
 
     @Override
-    public List<Action> getAllAction() {
-        return actionDao.findAll();
+    public List<Appartient> getAllAction() {
+        return actionDao.actionJeu();
     }
 
     @Override
