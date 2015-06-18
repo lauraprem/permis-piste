@@ -1,25 +1,30 @@
 package com.epul.model;
 
-import javax.persistence.*;
-import java.util.Collection;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
- * Created by Pierre on 16/06/2015.
+ * Created by Pierre on 03/06/2015.
  */
 @Entity
 public class Apprenant {
-    private int numapprenant;
+    private Integer numapprenant;
     private String nomapprenant;
     private String prenomapprenant;
-    private Collection<Obtient> obtientsByNumapprenant;
 
     @Id
     @Column(name = "NUMAPPRENANT")
-    public int getNumapprenant() {
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Integer getNumapprenant() {
         return numapprenant;
     }
 
-    public void setNumapprenant(int numapprenant) {
+    public void setNumapprenant(Integer numapprenant) {
         this.numapprenant = numapprenant;
     }
 
@@ -65,14 +70,5 @@ public class Apprenant {
         result = 31 * result + (nomapprenant != null ? nomapprenant.hashCode() : 0);
         result = 31 * result + (prenomapprenant != null ? prenomapprenant.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "apprenantByNumapprenant")
-    public Collection<Obtient> getObtientsByNumapprenant() {
-        return obtientsByNumapprenant;
-    }
-
-    public void setObtientsByNumapprenant(Collection<Obtient> obtientsByNumapprenant) {
-        this.obtientsByNumapprenant = obtientsByNumapprenant;
     }
 }
