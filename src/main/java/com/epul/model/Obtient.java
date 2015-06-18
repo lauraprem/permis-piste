@@ -1,24 +1,23 @@
 package com.epul.model;
 
+import javax.persistence.*;
 import java.sql.Date;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 @Entity
 @IdClass(ObtientPK.class)
 public class Obtient {
     private int numapprenant;
+    private int idjeu;
     private Date datejour;
     private int numaction;
     private Integer valeurdebut;
     private Integer valeurfin;
+    private Calendrier calendrierByDatejour;
+    private Action actionByNumaction;
+    private Apprenant apprenantByNumapprenant;
 
     @Id
     @Column(name = "NUMAPPRENANT")
@@ -28,6 +27,16 @@ public class Obtient {
 
     public void setNumapprenant(int numapprenant) {
         this.numapprenant = numapprenant;
+    }
+
+    @Id
+    @Column(name = "IDJEU")
+    public int getIdjeu() {
+        return idjeu;
+    }
+
+    public void setIdjeu(int idjeu) {
+        this.idjeu = idjeu;
     }
 
     @Id
@@ -77,8 +86,9 @@ public class Obtient {
 
         Obtient obtient = (Obtient) o;
 
-        if (numapprenant != obtient.numapprenant) return false;
+        if (idjeu != obtient.idjeu) return false;
         if (numaction != obtient.numaction) return false;
+        if (numapprenant != obtient.numapprenant) return false;
         if (datejour != null ? !datejour.equals(obtient.datejour) : obtient.datejour != null) return false;
         if (valeurdebut != null ? !valeurdebut.equals(obtient.valeurdebut) : obtient.valeurdebut != null) return false;
         if (valeurfin != null ? !valeurfin.equals(obtient.valeurfin) : obtient.valeurfin != null) return false;
@@ -89,10 +99,41 @@ public class Obtient {
     @Override
     public int hashCode() {
         int result = numapprenant;
+        result = 31 * result + idjeu;
         result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
         result = 31 * result + numaction;
         result = 31 * result + (valeurdebut != null ? valeurdebut.hashCode() : 0);
         result = 31 * result + (valeurfin != null ? valeurfin.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DATEJOUR", referencedColumnName = "DATEJOUR", nullable = false, insertable=false, updatable = false)
+    public Calendrier getCalendrierByDatejour() {
+        return calendrierByDatejour;
+    }
+
+    public void setCalendrierByDatejour(Calendrier calendrierByDatejour) {
+        this.calendrierByDatejour = calendrierByDatejour;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMACTION", referencedColumnName = "NUMACTION", nullable = false, insertable=false, updatable = false)
+    public Action getActionByNumaction() {
+        return actionByNumaction;
+    }
+
+    public void setActionByNumaction(Action actionByNumaction) {
+        this.actionByNumaction = actionByNumaction;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMAPPRENANT", referencedColumnName = "NUMAPPRENANT", nullable = false, insertable=false, updatable = false)
+    public Apprenant getApprenantByNumapprenant() {
+        return apprenantByNumapprenant;
+    }
+
+    public void setApprenantByNumapprenant(Apprenant apprenantByNumapprenant) {
+        this.apprenantByNumapprenant = apprenantByNumapprenant;
     }
 }

@@ -1,19 +1,15 @@
 package com.epul.model;
 
-
+import javax.persistence.Column;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 public class ObtientPK implements Serializable {
     private int numapprenant;
-    private Date datejour;
-    private int numaction;
 
     @Column(name = "NUMAPPRENANT")
     @Id
@@ -25,6 +21,20 @@ public class ObtientPK implements Serializable {
         this.numapprenant = numapprenant;
     }
 
+    private int idjeu;
+
+    @Column(name = "IDJEU")
+    @Id
+    public int getIdjeu() {
+        return idjeu;
+    }
+
+    public void setIdjeu(int idjeu) {
+        this.idjeu = idjeu;
+    }
+
+    private Date datejour;
+
     @Column(name = "DATEJOUR")
     @Id
     public Date getDatejour() {
@@ -34,6 +44,8 @@ public class ObtientPK implements Serializable {
     public void setDatejour(Date datejour) {
         this.datejour = datejour;
     }
+
+    private int numaction;
 
     @Column(name = "NUMACTION")
     @Id
@@ -52,8 +64,9 @@ public class ObtientPK implements Serializable {
 
         ObtientPK obtientPK = (ObtientPK) o;
 
-        if (numapprenant != obtientPK.numapprenant) return false;
+        if (idjeu != obtientPK.idjeu) return false;
         if (numaction != obtientPK.numaction) return false;
+        if (numapprenant != obtientPK.numapprenant) return false;
         if (datejour != null ? !datejour.equals(obtientPK.datejour) : obtientPK.datejour != null) return false;
 
         return true;
@@ -62,6 +75,7 @@ public class ObtientPK implements Serializable {
     @Override
     public int hashCode() {
         int result = numapprenant;
+        result = 31 * result + idjeu;
         result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
         result = 31 * result + numaction;
         return result;

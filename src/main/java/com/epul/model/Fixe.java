@@ -1,19 +1,17 @@
 package com.epul.model;
 
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 @Entity
 @IdClass(FixePK.class)
 public class Fixe {
     private int nummission;
     private int numobjectif;
+    private Objectif objectifByNumobjectif;
+    private Mission missionByNummission;
 
     @Id
     @Column(name = "NUMMISSION")
@@ -53,5 +51,25 @@ public class Fixe {
         int result = nummission;
         result = 31 * result + numobjectif;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMOBJECTIF", referencedColumnName = "NUMOBJECTIF", nullable = false, insertable=false, updatable = false)
+    public Objectif getObjectifByNumobjectif() {
+        return objectifByNumobjectif;
+    }
+
+    public void setObjectifByNumobjectif(Objectif objectifByNumobjectif) {
+        this.objectifByNumobjectif = objectifByNumobjectif;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMMISSION", referencedColumnName = "NUMMISSION", nullable = false, insertable=false, updatable = false)
+    public Mission getMissionByNummission() {
+        return missionByNummission;
+    }
+
+    public void setMissionByNummission(Mission missionByNummission) {
+        this.missionByNummission = missionByNummission;
     }
 }

@@ -1,14 +1,9 @@
 package com.epul.model;
 
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 16/06/2015.
  */
 @Entity
 @Table(name = "est_associe", schema = "", catalog = "permispiste")
@@ -16,6 +11,8 @@ import javax.persistence.Table;
 public class EstAssocie {
     private int numaction;
     private int numobjectif;
+    private Action actionByNumaction;
+    private Objectif objectifByNumobjectif;
 
     @Id
     @Column(name = "NUMACTION")
@@ -55,5 +52,25 @@ public class EstAssocie {
         int result = numaction;
         result = 31 * result + numobjectif;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMACTION", referencedColumnName = "NUMACTION", nullable = false, insertable=false, updatable = false)
+    public Action getActionByNumaction() {
+        return actionByNumaction;
+    }
+
+    public void setActionByNumaction(Action actionByNumaction) {
+        this.actionByNumaction = actionByNumaction;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMOBJECTIF", referencedColumnName = "NUMOBJECTIF", nullable = false, insertable=false, updatable = false)
+    public Objectif getObjectifByNumobjectif() {
+        return objectifByNumobjectif;
+    }
+
+    public void setObjectifByNumobjectif(Objectif objectifByNumobjectif) {
+        this.objectifByNumobjectif = objectifByNumobjectif;
     }
 }
