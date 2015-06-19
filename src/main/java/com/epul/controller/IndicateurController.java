@@ -70,6 +70,20 @@ public class IndicateurController {
      * @return true si a modification a eu lieu, false sinon
      */
     public boolean modifyIndicateur(Indicateur indicateur){
+
         return false;
+    }
+
+    /**
+     * Search of an iteration
+     * @param search it's an attribute of the search
+     * @return the wanted iteration
+     */
+    @RequestMapping(value = "/search/{search}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Indicateur> searchIndicateur(@PathVariable String search){
+        List<Indicateur> newIndicateur = indicateurService.searchIndicateur(search);
+        return newIndicateur;
     }
 }

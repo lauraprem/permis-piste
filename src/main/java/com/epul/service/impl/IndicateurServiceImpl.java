@@ -1,5 +1,6 @@
 package com.epul.service.impl;
 
+import com.epul.Utils.Util;
 import com.epul.model.Indicateur;
 import com.epul.repository.IIndicateurDao;
 import com.epul.service.IIndicateurService;
@@ -39,5 +40,14 @@ public class IndicateurServiceImpl implements IIndicateurService {
     @Override
     public boolean modifyIndicateur(Indicateur indicateur) {
         return false;
+    }
+
+    @Override
+    public List<Indicateur> searchIndicateur(String search) {
+        if (Util.isInteger(search)) {
+            int s = Integer.valueOf(search);
+            return indicateurDao.searchIndicateur(s, s, search, s);
+        }
+        return indicateurDao.searchIndicateur(search);
     }
 }

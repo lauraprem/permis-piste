@@ -42,4 +42,6 @@ public interface IIndicateurService {
      * @return true si a modification a eu lieu, false sinon
      */
     public boolean modifyIndicateur(Indicateur indicateur);
+
+    List<Indicateur> searchIndicateur(String search);
 }
