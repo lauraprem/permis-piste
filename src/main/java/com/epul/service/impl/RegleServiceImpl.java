@@ -43,4 +43,9 @@ public class RegleServiceImpl implements IRegleService {
     public boolean modifyRegle(Regle regle) {
         return false;
     }
+
+    @Override
+    public List<Regle> getRegleForAction(int id) {
+        return regleDao.getRegleForAction(id);
+    }
 }

@@ -65,6 +65,13 @@ public class RegleController {
         return regleService.addRegle(regle);
     }
 
+    @RequestMapping(value="/Action/{id}")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Regle> getRegleForAction(@PathVariable int id){
+        return regleService.getRegleForAction(id);
+    }
+
     /**
      * Modifie l'regle possedant cet ID avec les nouvelles informations
      * Si l'ID n'existe pas en BDD, on ne fait rien

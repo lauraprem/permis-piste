@@ -28,6 +28,8 @@ public interface IIndicateurService {
      */
     public boolean suppressIndicateur(int id);
 
+    List<Indicateur> getIndicateurForAction(int id);
+
     /**
      * Ajouter un indicateur a la base de données (l'id est mis en place selon le dernier ID en BDD)
      * @param indicateur a ajouter

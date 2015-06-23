@@ -1,9 +1,6 @@
 package com.epul.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Pierre on 03/06/2015.
@@ -14,6 +11,7 @@ public class Action {
     private Integer actNumaction;
     private String libaction;
     private Integer scoremin;
+    private Action actionByNumaction;
 
     @Id
     @Column(name = "NUMACTION")
@@ -78,5 +76,15 @@ public class Action {
         result = 31 * result + (libaction != null ? libaction.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);
         return result;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "ACT_NUMACTION", insertable = false, updatable = false)
+    public Action getActionByNumaction(){
+        return actionByNumaction;
+    }
+
+    public void setActionByNumaction(Action action){
+        this.actionByNumaction = action;
     }
 }
