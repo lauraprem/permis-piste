@@ -33,6 +33,11 @@ public class IndicateurServiceImpl implements IIndicateurService {
     }
 
     @Override
+    public List<Indicateur> getIndicateurForAction(int id) {
+        return indicateurDao.getIndicateurForAction(id);
+    }
+
+    @Override
     public boolean addIndicateur(Indicateur indicateur) {
         return false;
     }

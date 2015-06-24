@@ -16,4 +16,7 @@ public interface IIndicateurDao extends JpaRepository<Indicateur, Integer> {
 
     @Query("FROM Indicateur WHERE LIBINDIC= :libindic ")
     public List<Indicateur> searchIndicateur( @Param("libindic") String libindic);
+
+    @Query("FROM Indicateur WHERE NUMACTION= :numaction")
+    List<Indicateur> getIndicateurForAction(@Param("numaction") int numAction);
 }

@@ -77,7 +77,7 @@ public class RegleController {
     public List<Regle> getRegleForAction(@PathVariable int id){
         return regleService.getRegleForAction(id);
     }
-    
+
     /**
      * Modifie l'regle possedant cet ID avec les nouvelles informations
      * Si l'ID n'existe pas en BDD, on ne fait rien

@@ -54,4 +54,6 @@ public class RegleServiceImpl implements IRegleService {
     public List<Regle> getRegleForAction(int id) {
         return regleDao.getRegleForAction(id);
     }
+
+ 
 }

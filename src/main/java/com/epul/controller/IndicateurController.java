@@ -45,6 +45,15 @@ public class IndicateurController {
         return indicateurService.getIndicateur(id);
     }
 
+
+    @RequestMapping(value="/Action/{id}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Indicateur> getIndicateurForAction(@PathVariable int id){
+        return indicateurService.getIndicateurForAction(id);
+    }
+
+
     /**
      * Supprimer un indicateur grace a son id
      * @param id de l'indicateur a supprimer

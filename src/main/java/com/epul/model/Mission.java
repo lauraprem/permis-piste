@@ -83,4 +83,5 @@ public class Mission {
         result = 31 * result + (libmission != null ? libmission.hashCode() : 0);
         return result;
     }
+
 }

@@ -9,14 +9,16 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 /**
  * Created by Pierre on 03/06/2015.
  */
 @Entity
 public class Jeu {
-	private int numjeu;
-	private String libellejeu;
-	private List<Mission> missionJeu;
+
+    private int numjeu;
+    private String libellejeu;
+    private List<Mission> missionJeu;
 
 	@Id
 	@Column(name = "NUMJEU")
@@ -37,8 +39,6 @@ public class Jeu {
 	public void setLibellejeu(String libellejeu) {
 		this.libellejeu = libellejeu;
 	}
-	
-	
 
     @OneToMany(mappedBy="jeuByNumjeu", fetch=FetchType.EAGER)
     public List<Mission> getMissionJeu(){
@@ -66,10 +66,13 @@ public class Jeu {
 		return true;
 	}
 
-	@Override
-	public int hashCode() {
-		int result = numjeu;
-		result = 31 * result + (libellejeu != null ? libellejeu.hashCode() : 0);
-		return result;
-	}
+
+
+    @Override
+    public int hashCode() {
+        int result = numjeu;
+        result = 31 * result + (libellejeu != null ? libellejeu.hashCode() : 0);
+        return result;
+    }
+
 }
