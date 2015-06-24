@@ -44,10 +44,12 @@ public class Jeu {
     public List<Mission> getMissionJeu(){
         return missionJeu;
     }
-
-	public void setMissions(List<Mission> missions) {
-		this.missionJeu = missions;
+	public void setMissionJeu(List<Mission> missionJeu) {
+		this.missionJeu = missionJeu;
 	}
+
+	
+
 
 	@Override
 	public boolean equals(Object o) {
