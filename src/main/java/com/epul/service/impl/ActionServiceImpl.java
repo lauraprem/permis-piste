@@ -28,12 +28,14 @@ public class ActionServiceImpl implements IActionService{
 
     @Override
     public boolean suppressAction(int id) {
+        actionDao.delete(id);
         return false;
     }
 
     @Override
     public boolean addAction(Action action) {
-        return false;
+        actionDao.save(action);
+        return true;
     }
 
     @Override

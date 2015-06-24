@@ -8,7 +8,5 @@ import org.springframework.data.repository.query.Param;
 /**
  * Created by Pierre on 13/06/2015.
  */
-public interface IActionDao extends JpaRepository<Action,Integer> {/*
-    @Query("FROM Action WHERE ")
-    public Action getAction(@Param("numaction") int numaction);*/
+public interface IActionDao extends JpaRepository<Action,Integer> {
 }

@@ -1,10 +1,9 @@
 package com.epul.model;
 
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 /**
  * Created by Pierre on 03/06/2015.
@@ -14,6 +13,9 @@ public class Mission {
     private int nummission;
     private int numjeu;
     private String libmission;
+
+    @JsonIgnore
+    private Jeu jeuByNumjeu;
 
     @Id
     @Column(name = "NUMMISSION")
@@ -65,5 +67,15 @@ public class Mission {
         result = 31 * result + numjeu;
         result = 31 * result + (libmission != null ? libmission.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "NUMJEU", insertable = false, updatable = false)
+    public Jeu getJeuByNumjeu(){
+        return jeuByNumjeu;
+    }
+
+    public void setJeuByNumjeu(Jeu jeu){
+        this.jeuByNumjeu = jeu;
     }
 }

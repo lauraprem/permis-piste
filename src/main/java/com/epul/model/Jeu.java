@@ -1,10 +1,8 @@
 package com.epul.model;
 
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Pierre on 03/06/2015.
@@ -13,6 +11,7 @@ import javax.persistence.Id;
 public class Jeu {
     private int numjeu;
     private String libellejeu;
+    private List<Mission> missionJeu;
 
     @Id
     @Column(name = "NUMJEU")
@@ -52,5 +51,14 @@ public class Jeu {
         int result = numjeu;
         result = 31 * result + (libellejeu != null ? libellejeu.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy="jeuByNumjeu", fetch=FetchType.EAGER)
+    public List<Mission> getMissionJeu(){
+        return missionJeu;
+    }
+
+    public void setMissionJeu(List<Mission> mission){
+        this.missionJeu = mission;
     }
 }

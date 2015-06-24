@@ -47,8 +47,11 @@ public class ActionController {
      * @param id de l'action a supprimer
      * @return true si la suppression a fonctionné, false sinon
      */
-    public boolean suppressAction(int id){
-        return false;
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean suppressAction(@PathVariable int id){
+        return actionService.suppressAction(id);
     }
 
     /**
@@ -56,8 +59,11 @@ public class ActionController {
      * @param action a ajouter
      * @return true si l'ajout a fonctioné false sinon
      */
-    public boolean addAction(Action action){
-        return false;
+    @RequestMapping(value="/", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean addAction(@RequestBody Action action){
+        return actionService.addAction(action);
     }
 
     /**
@@ -66,7 +72,10 @@ public class ActionController {
      * @param action l'action modifié
      * @return true si a modification a eu lieu, false sinon
      */
-    public boolean modifyAction(Action action){
+    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public boolean modifyAction(@RequestBody Action action){
         return false;
     }
 }
