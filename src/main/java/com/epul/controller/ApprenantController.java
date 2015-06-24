@@ -62,11 +62,11 @@ public class ApprenantController {
 	 * @param apprenant a ajouter
 	 * @return true si l'ajout a fonctioné false sinon
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.POST ,  produces ={"application/json"})
+	@RequestMapping(value = "/", method = RequestMethod.POST ,  produces ={"application/json"}, consumes = {"application/json"})
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public void addApprenant(@RequestBody Apprenant apprenant){
-		apprenantService.addOrModifyApprenant(apprenant);
+		apprenantService.addApprenant(apprenant);
 	}
 
 	/**
@@ -75,7 +75,10 @@ public class ApprenantController {
 	 * @param apprenant l'apprenant modifié
 	 * @return true si a modification a eu lieu, false sinon
 	 */
-	public boolean modifyApprenant(Apprenant apprenant){
-		return false;
+	@RequestMapping(value = "/", method = RequestMethod.PUT ,  produces ={"application/json"} ,consumes = {"application/json"})
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public void modifyApprenant(@RequestBody Apprenant apprenant){
+		apprenantService.modifyApprenant(apprenant);
 	}
 }

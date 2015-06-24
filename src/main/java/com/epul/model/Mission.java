@@ -5,6 +5,10 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by Pierre on 03/06/2015.
@@ -14,6 +18,8 @@ public class Mission {
     private int nummission;
     private int numjeu;
     private String libmission;
+    @JsonIgnore
+    private Jeu jeuByNumjeu;
 
     @Id
     @Column(name = "NUMMISSION")
@@ -45,7 +51,18 @@ public class Mission {
         this.libmission = libmission;
     }
 
-    @Override
+
+    @ManyToOne
+    @JoinColumn(name = "NUMJEU", insertable = false, updatable = false)
+    public Jeu getJeuByNumjeu(){
+        return jeuByNumjeu;
+    }
+
+    public void setJeuByNumjeu(Jeu jeu){
+        this.jeuByNumjeu = jeu;
+    }
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

@@ -31,8 +31,8 @@ public interface IApprenantService {
 	 * @param apprenant a ajouter
 	 * @return true si l'ajout a fonctioné false sinon
 	 */
-	public void addOrModifyApprenant(Apprenant apprenant);
+	public void addApprenant(Apprenant apprenant);
 	
-
+	public void modifyApprenant(Apprenant apprenant);
 	
 }

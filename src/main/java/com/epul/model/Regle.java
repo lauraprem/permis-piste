@@ -4,6 +4,8 @@ package com.epul.model;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -11,17 +13,18 @@ import javax.persistence.Id;
  */
 @Entity
 public class Regle {
-    private int numregle;
+    private Integer numregle;
     private String libregle;
     private Integer scoremin;
 
     @Id
     @Column(name = "NUMREGLE")
-    public int getNumregle() {
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Integer getNumregle() {
         return numregle;
     }
 
-    public void setNumregle(int numregle) {
+    public void setNumregle(Integer numregle) {
         this.numregle = numregle;
     }
 

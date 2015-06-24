@@ -42,4 +42,7 @@ public interface IRegleService {
      * @return true si a modification a eu lieu, false sinon
      */
     public boolean modifyRegle(Regle regle);
+    
+
+    public List<Regle> getRegleForAction(int id);
 }
