@@ -5,6 +5,7 @@ package com.epul.controller;
  */
 
 import com.epul.model.Action;
+import com.epul.model.EstAssocie;
 import com.epul.model.Objectif;
 import com.epul.service.IObjectifService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,10 +82,10 @@ public class ObjectifController {
         return objectifService.modifyObjectif(objectif);
     }
 
-    @RequestMapping(value="/Action/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/{id}/Action", method = RequestMethod.GET)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public List<Action> getActionForObjectif(@PathVariable int id){
+    public List<EstAssocie> getActionForObjectif(@PathVariable int id){
         return objectifService.getActionForObjectif(id);
     }
 }

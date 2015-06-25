@@ -1,6 +1,7 @@
 package com.epul.service.impl;
 
 import com.epul.model.Action;
+import com.epul.model.EstAssocie;
 import com.epul.model.Objectif;
 import com.epul.repository.IObjectifDao;
 import com.epul.service.IObjectifService;
@@ -51,7 +52,7 @@ public class ObjectifServiceImpl implements IObjectifService {
     }
 
     @Override
-    public List<Action> getActionForObjectif(int id) {
+    public List<EstAssocie> getActionForObjectif(int id) {
         return objectifDao.getActionForOneObjectif(id);
     }
 

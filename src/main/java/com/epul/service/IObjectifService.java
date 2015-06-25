@@ -1,6 +1,7 @@
 package com.epul.service;
 
 import com.epul.model.Action;
+import com.epul.model.EstAssocie;
 import com.epul.model.Objectif;
 
 import java.util.List;
@@ -45,5 +46,5 @@ public interface IObjectifService {
      */
     public boolean modifyObjectif(Objectif objectif);
 
-    public List<Action> getActionForObjectif(int id);
+    public List<EstAssocie> getActionForObjectif(int id);
 }
