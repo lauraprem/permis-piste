@@ -14,6 +14,7 @@ public class Action {
     private Action actionByNumaction;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NUMACTION")
     public int getNumaction() {
         return numaction;

@@ -12,7 +12,7 @@ public class Regle {
     private Integer scoremin;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NUMREGLE")
     public int getNumregle() {
         return numregle;

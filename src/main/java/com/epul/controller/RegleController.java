@@ -88,7 +88,6 @@ public class RegleController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public boolean modifyRegle(@RequestBody Regle regle){
-//    	return regleService.addRegle(regle);
     	return regleService.modifyRegle(regle);
     }
 }

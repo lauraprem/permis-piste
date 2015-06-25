@@ -40,6 +40,7 @@ public class ActionServiceImpl implements IActionService{
 
     @Override
     public boolean modifyAction(Action action) {
-        return false;
+        actionDao.modifyAction(action.getActNumaction(), action.getLibaction(), action.getScoremin(), action.getNumaction());
+        return true;
     }
 }
