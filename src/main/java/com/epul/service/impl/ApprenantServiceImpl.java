@@ -36,13 +36,12 @@ public class ApprenantServiceImpl implements IApprenantService {
 
 	@Override
 	public void addApprenant(Apprenant apprenant) {
-//		apprenant.setNumapprenant(null);
-		apprenantDAO.saveAndFlush(apprenant);
+		apprenantDAO.save(apprenant);
 	}
 
 	@Override
 	public void modifyApprenant(Apprenant apprenant) {
-		apprenantDAO.save(apprenant);
+		apprenantDAO.modifyApprenant(apprenant.getNomapprenant(), apprenant.getPrenomapprenant(), apprenant.getNumapprenant());
 	}
 	
 	

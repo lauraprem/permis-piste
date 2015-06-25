@@ -43,7 +43,9 @@ public class ObjectifServiceImpl implements IObjectifService {
     }
 
     @Override
-    public boolean modifyObjectif(Objectif objectif) {
-        return false;
+    public boolean modifyObjectif(Objectif objectif)
+    {
+        objectifDao.modifyObjectif(objectif.getLibobjectif(), objectif.getNumobjectif());
+        return true;
     }
 }

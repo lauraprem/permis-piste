@@ -66,4 +66,17 @@ public class ObjectifController {
     public boolean suppressObjectif(@PathVariable int id){
         return objectifService.suppressObjectif(id);
     }
+
+    /**
+     * Modifie l'objectif possedant cet ID avec les nouvelles informations
+     * Si l'ID n'existe pas en BDD, on ne fait rien
+     * @param objectif l'objectif modifié
+     * @return true si a modification a eu lieu, false sinon
+     */
+    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public boolean modifyObjectif(Objectif objectif){
+        return objectifService.modifyObjectif(objectif);
+    }
 }
