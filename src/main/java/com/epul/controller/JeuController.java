@@ -46,8 +46,11 @@ public class JeuController {
      * @param id du jeu a supprimer
      * @return true si la suppression a fonctionné, false sinon
      */
-    public boolean suppressIndicateur(int id){
-        return false;
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean suppressJeu(@PathVariable int id){
+        return jeuService.suppressJeu(id);
     }
 
     /**
@@ -55,8 +58,11 @@ public class JeuController {
      * @param jeu a ajouter
      * @return true si l'ajout a fonctionné false sinon
      */
-    public boolean addIndicateur(Jeu jeu){
-        return false;
+    @RequestMapping(value="/", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean addJeu(@RequestBody Jeu jeu){
+        return jeuService.addJeu(jeu);
     }
 
     /**
@@ -65,7 +71,10 @@ public class JeuController {
      * @param jeu le jeu modifié
      * @return true si a modification a eu lieu, false sinon
      */
-    public boolean modifyIndicateur(Jeu jeu){
-        return false;
+    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public boolean modifyJeu(@RequestBody Jeu jeu){
+        return jeuService.modifyJeu(jeu);
     }
 }

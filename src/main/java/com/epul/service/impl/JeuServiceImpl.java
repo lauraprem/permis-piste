@@ -28,16 +28,19 @@ public class JeuServiceImpl implements IJeuService{
 
     @Override
     public boolean suppressJeu(int id) {
-        return false;
+        jeuDao.delete(id);
+        return true;
     }
 
     @Override
     public boolean addJeu(Jeu jeu) {
-        return false;
+        jeuDao.save(jeu);
+        return true;
     }
 
     @Override
     public boolean modifyJeu(Jeu jeu) {
-        return false;
+        jeuDao.modifyJeu(jeu.getLibellejeu(), jeu.getNumjeu());
+        return true;
     }
 }

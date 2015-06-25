@@ -59,8 +59,11 @@ public class IndicateurController {
      * @param id de l'indicateur a supprimer
      * @return true si la suppression a fonctionné, false sinon
      */
-    public boolean suppressIndicateur(int id){
-        return false;
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean suppressIndicateur(@PathVariable int id){
+        return indicateurService.suppressIndicateur(id);
     }
 
     /**
