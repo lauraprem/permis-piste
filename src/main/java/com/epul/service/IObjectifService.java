@@ -1,5 +1,6 @@
 package com.epul.service;
 
+import com.epul.model.Action;
 import com.epul.model.Objectif;
 
 import java.util.List;
@@ -43,4 +44,6 @@ public interface IObjectifService {
      * @return true si a modification a eu lieu, false sinon
      */
     public boolean modifyObjectif(Objectif objectif);
+
+    public List<Action> getActionForObjectif(int id);
 }

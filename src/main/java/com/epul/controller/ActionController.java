@@ -73,9 +73,9 @@ public class ActionController {
      * @return true si a modification a eu lieu, false sinon
      */
     @RequestMapping(value="/", method = RequestMethod.PUT)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
-    public boolean modifyAction(@RequestBody Action action){
+     @ResponseBody
+     @ResponseStatus(HttpStatus.OK)
+     public boolean modifyAction(@RequestBody Action action){
         return actionService.modifyAction(action);
     }
 }

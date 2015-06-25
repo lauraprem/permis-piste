@@ -4,6 +4,7 @@ package com.epul.controller;
  * Created by Pierre on 10/06/2015.
  */
 
+import com.epul.model.Action;
 import com.epul.model.Objectif;
 import com.epul.service.IObjectifService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,5 +79,12 @@ public class ObjectifController {
     @ResponseStatus(HttpStatus.OK)
     public boolean modifyObjectif(Objectif objectif){
         return objectifService.modifyObjectif(objectif);
+    }
+
+    @RequestMapping(value="/Action/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Action> getActionForObjectif(@PathVariable int id){
+        return objectifService.getActionForObjectif(id);
     }
 }
