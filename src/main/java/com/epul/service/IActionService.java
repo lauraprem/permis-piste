@@ -1,8 +1,8 @@
 package com.epul.service;
 
-import com.epul.model.Action;
-
 import java.util.List;
+
+import com.epul.model.Action;
 
 /**
  * Created by Pierre on 13/06/2015.
@@ -42,4 +42,6 @@ public interface IActionService {
      * @return true si a modification a eu lieu, false sinon
      */
     public boolean modifyAction(Action action);
+    
+    List<Action> searchAction(String search);
 }

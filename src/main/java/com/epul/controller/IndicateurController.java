@@ -1,16 +1,19 @@
 package com.epul.controller;
 
-import com.epul.model.Action;
-import com.epul.model.Indicateur;
-import com.epul.service.IIndicateurService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.util.List;
+import com.epul.model.Indicateur;
+import com.epul.service.IIndicateurService;
 
 /**
  * Created by Pierre on 13/06/2015.
@@ -96,7 +99,7 @@ public class IndicateurController {
      * @param search it's an attribute of the search
      * @return the wanted iteration
      */
-    @RequestMapping(value = "/search/{search}", method = RequestMethod.GET, produces={"application/json"})
+    @RequestMapping(value = "/Search/{search}", method = RequestMethod.GET, produces={"application/json"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public List<Indicateur> searchIndicateur(@PathVariable String search){

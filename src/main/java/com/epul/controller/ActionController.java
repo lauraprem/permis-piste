@@ -1,14 +1,19 @@
 package com.epul.controller;
 
-import com.epul.model.Action;
-import com.epul.model.Indicateur;
-import com.epul.service.IActionService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.List;
+import com.epul.model.Action;
+import com.epul.service.IActionService;
 
 /**
  * Created by Pierre on 13/06/2015.
@@ -78,4 +83,13 @@ public class ActionController {
      public boolean modifyAction(@RequestBody Action action){
         return actionService.modifyAction(action);
     }
+    
+    @RequestMapping(value = "/Search/{search}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Action> searchAction(@PathVariable String search){
+        List<Action> newAction = actionService.searchAction(search);
+        return newAction;
+    }
+    
 }

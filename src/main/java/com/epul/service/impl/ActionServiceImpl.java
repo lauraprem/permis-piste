@@ -1,12 +1,14 @@
 package com.epul.service.impl;
 
-import com.epul.model.Action;
-import com.epul.repository.IActionDao;
-import com.epul.service.IActionService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.epul.Utils.Util;
+import com.epul.model.Action;
+import com.epul.repository.IActionDao;
+import com.epul.service.IActionService;
 
 /**
  * Created by Pierre on 13/06/2015.
@@ -43,4 +45,15 @@ public class ActionServiceImpl implements IActionService{
         actionDao.modifyAction(action.getActNumaction(), action.getLibaction(), action.getScoremin(), action.getNumaction());
         return true;
     }
+
+	@Override
+	public List<Action> searchAction(String search) {
+		 if (Util.isInteger(search)) {
+	            int s = Integer.valueOf(search);
+	            return actionDao.searchAction(s, s, search, s);
+	        }
+	        return actionDao.searchAction(search);
+	}
+    
+    
 }
