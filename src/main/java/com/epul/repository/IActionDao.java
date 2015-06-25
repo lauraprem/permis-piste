@@ -16,5 +16,5 @@ public interface IActionDao extends JpaRepository<Action,Integer> {
     @Transactional
     @Modifying
     @Query("UPDATE Action set  ACTNUMACTION = :actnumaction, LIBACTION = :lib, SCOREMIN = :scoremin where NUMACTION = :id")
-    public void modifyAction(@Param("actnumaction") int numaction , @Param("lib") String lib,@Param("scoremin") int scoremin,@Param("id") int id);
+    public void modifyAction(@Param("actnumaction") int numaction , @Param("lib") String lib, @Param("scoremin") int scoremin,@Param("id") int id);
 }

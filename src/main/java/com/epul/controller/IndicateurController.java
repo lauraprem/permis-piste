@@ -87,7 +87,7 @@ public class IndicateurController {
     @RequestMapping(value="/", method = RequestMethod.PUT)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public boolean modifyIndicateur(Indicateur indicateur){
+    public boolean modifyIndicateur(@RequestBody Indicateur indicateur){
         return indicateurService.modifyIndicateur(indicateur);
     }
 
