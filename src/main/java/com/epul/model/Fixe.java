@@ -14,8 +14,26 @@ import javax.persistence.IdClass;
 public class Fixe {
     private int nummission;
     private int numobjectif;
+    private Objectif objectif;
+    private Mission mission;
+//
+//    public Objectif getObjectif() {
+//		return objectif;
+//	}
+//
+//	public void setObjectif(Objectif objectif) {
+//		this.objectif = objectif;
+//	}
+//
+//	public Mission getMission() {
+//		return mission;
+//	}
+//
+//	public void setMission(Mission mission) {
+//		this.mission = mission;
+//	}
 
-    @Id
+	@Id
     @Column(name = "NUMMISSION")
     public int getNummission() {
         return nummission;
