@@ -15,6 +15,7 @@ public class Indicateur {
     private Action actionByNumaction;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NUMINDIC")
     public int getNumindic() {
         return numindic;

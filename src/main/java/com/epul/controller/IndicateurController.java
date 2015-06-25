@@ -68,8 +68,11 @@ public class IndicateurController {
      * @param indicateur a ajouter
      * @return true si l'ajout a fonctionné false sinon
      */
-    public boolean addIndicateur(Indicateur indicateur){
-        return false;
+    @RequestMapping(value="/", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean addIndicateur(@RequestBody Indicateur indicateur){
+        return indicateurService.addIndicateur(indicateur);
     }
 
     /**
@@ -78,9 +81,11 @@ public class IndicateurController {
      * @param indicateur l'indicateur modifié
      * @return true si a modification a eu lieu, false sinon
      */
+    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
     public boolean modifyIndicateur(Indicateur indicateur){
-
-        return false;
+        return indicateurService.modifyIndicateur(indicateur);
     }
 
     /**

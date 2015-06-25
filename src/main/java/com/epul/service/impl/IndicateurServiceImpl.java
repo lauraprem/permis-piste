@@ -39,12 +39,14 @@ public class IndicateurServiceImpl implements IIndicateurService {
 
     @Override
     public boolean addIndicateur(Indicateur indicateur) {
-        return false;
+        indicateurDao.save(indicateur);
+        return true;
     }
 
     @Override
     public boolean modifyIndicateur(Indicateur indicateur) {
-        return false;
+        indicateurDao.modifyIndicateur(indicateur.getNumaction(), indicateur.getLibindic(), indicateur.getPoids(), indicateur.getNumindic());
+        return true;
     }
 
     @Override

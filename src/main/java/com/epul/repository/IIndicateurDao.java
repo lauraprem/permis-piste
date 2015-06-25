@@ -2,9 +2,11 @@ package com.epul.repository;
 
 import com.epul.model.Indicateur;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -19,4 +21,10 @@ public interface IIndicateurDao extends JpaRepository<Indicateur, Integer> {
 
     @Query("FROM Indicateur WHERE NUMACTION= :numaction")
     List<Indicateur> getIndicateurForAction(@Param("numaction") int numAction);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Indicateur set NUMACTION = :numaction, LIBINDIC = :lib, POIDS = :poids where NUMINDIC = :id")
+    public void modifyIndicateur(@Param("numaction") int numaction , @Param("lib") String lib, @Param("poids") int poids,@Param("id") int id);
+
 }
