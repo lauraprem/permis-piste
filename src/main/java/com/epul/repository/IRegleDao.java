@@ -17,8 +17,6 @@ import com.epul.model.Regle;
  * Created by Pierre on 13/06/2015.
  */
 public interface IRegleDao extends JpaRepository<Regle,Integer> {
-
-	
     @Query("FROM Indicateur WHERE NUMINDIC= :numaction")
     public List<Regle> getRegleForAction(@Param("numaction") int numAction);
 

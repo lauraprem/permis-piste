@@ -64,7 +64,7 @@ public class RegleController {
      * @param regle a ajouter
      * @return true si l'ajout a fonctioné false sinon
      */
-    @RequestMapping(value="/", method = RequestMethod.POST, produces ={"application/json"})
+    @RequestMapping(value="/", method = RequestMethod.POST)
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public boolean addRegle(@RequestBody Regle regle){

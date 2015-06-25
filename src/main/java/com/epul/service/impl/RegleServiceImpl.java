@@ -36,10 +36,8 @@ public class RegleServiceImpl implements IRegleService {
         return true;
     }
 
-    @Transactional
     @Override
     public boolean addRegle(Regle regle) {
-//    	regle.setNumregle(null);
         regleDao.save(regle);
         return true;
     }

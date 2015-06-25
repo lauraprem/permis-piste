@@ -1,30 +1,24 @@
 package com.epul.model;
 
-
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by Pierre on 03/06/2015.
+ * Created by Pierre on 25/06/2015.
  */
 @Entity
 public class Regle {
-    private Integer numregle;
+    private int numregle;
     private String libregle;
     private Integer scoremin;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "NUMREGLE")
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    public Integer getNumregle() {
+    public int getNumregle() {
         return numregle;
     }
 
-    public void setNumregle(Integer numregle) {
+    public void setNumregle(int numregle) {
         this.numregle = numregle;
     }
 
