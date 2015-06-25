@@ -44,4 +44,6 @@ public interface IRegleService {
     public boolean modifyRegle(Regle regle);
 
     public List<Regle> getRegleForAction(int id);
+
+    public List<Regle> searchRegle(String search);
 }

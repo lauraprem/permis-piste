@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.epul.Utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +54,14 @@ public class RegleServiceImpl implements IRegleService {
         return regleDao.getRegleForAction(id);
     }
 
- 
+    @Override
+    public List<Regle> searchRegle(String search) {
+        if (Util.isInteger(search)) {
+            int s = Integer.valueOf(search);
+            return regleDao.searchRegle(s, "%" + search + "%", s);
+        }
+        return regleDao.searchRegle("%" + search + "%");
+    }
+
+
 }

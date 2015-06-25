@@ -1,5 +1,6 @@
 package com.epul.service.impl;
 
+import com.epul.Utils.Util;
 import com.epul.model.Action;
 import com.epul.model.EstAssocie;
 import com.epul.model.Objectif;
@@ -56,5 +57,12 @@ public class ObjectifServiceImpl implements IObjectifService {
         return objectifDao.getActionForOneObjectif(id);
     }
 
-
+    @Override
+    public List<Objectif> searchObjectif(String search) {
+        if (Util.isInteger(search)) {
+            int s = Integer.valueOf(search);
+            return objectifDao.searchObjectif(s, "%" + search + "%");
+        }
+        return objectifDao.searchObjectif("%" + search + "%");
+    }
 }

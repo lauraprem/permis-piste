@@ -13,4 +13,9 @@ public interface IMissionDao extends JpaRepository<Mission, Integer> {
     @Query("FROM Fixe AS f, Mission as m, Objectif AS o WHERE o.numobjectif = f.numobjectif AND m.nummission = f.nummission AND m.nummission = :idmission")
     public List<Fixe> missionObjectif(@Param("idmission") int idmission);
 
+    @Query("FROM Mission WHERE NUMMISSION= :nummission OR NUMJEU= :numjeu OR LIBMISSION= :libmission")
+    public List<Mission> searchMission(@Param("nummission") int nummission, @Param("numjeu") int numjeu, @Param("libmission") String libmission);
+
+    @Query("FROM Mission WHERE LIBMISSION LIKE :libmission")
+    public List<Mission> searchMission( @Param("libmission") String libmission);
 }

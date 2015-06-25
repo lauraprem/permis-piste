@@ -88,4 +88,17 @@ public class ObjectifController {
     public List<EstAssocie> getActionForObjectif(@PathVariable int id){
         return objectifService.getActionForObjectif(id);
     }
+
+    /**
+     * Search of an iteration
+     * @param search it's an attribute of the search
+     * @return the wanted iteration
+     */
+    @RequestMapping(value = "/Search/{search}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Objectif> searchIndicateur(@PathVariable String search){
+        List<Objectif> newObjectif = objectifService.searchObjectif(search);
+        return newObjectif;
+    }
 }

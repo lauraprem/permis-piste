@@ -90,4 +90,18 @@ public class RegleController {
     public boolean modifyRegle(@RequestBody Regle regle){
     	return regleService.modifyRegle(regle);
     }
+
+    /**
+     * Search of an iteration
+     * @param search it's an attribute of the search
+     * @return the wanted iteration
+     */
+    @RequestMapping(value = "/Search/{search}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Regle> searchIndicateur(@PathVariable String search){
+        List<Regle> newRegle = regleService.searchRegle(search);
+        return newRegle;
+    }
+
 }

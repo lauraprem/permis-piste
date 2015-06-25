@@ -47,4 +47,6 @@ public interface IObjectifService {
     public boolean modifyObjectif(Objectif objectif);
 
     public List<EstAssocie> getActionForObjectif(int id);
+
+    public List<Objectif> searchObjectif(String search);
 }

@@ -2,6 +2,7 @@ package com.epul.controller;
 
 import java.util.List;
 
+import com.epul.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -27,4 +28,16 @@ public class MissionController {
     	return missionService.getMissionsObjectif(idMission);
     }
 
+    /**
+     * Search of an iteration
+     * @param search it's an attribute of the search
+     * @return the wanted iteration
+     */
+    @RequestMapping(value = "/Search/{search}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Mission> searchIndicateur(@PathVariable String search){
+        List<Mission> newMission = missionService.searchMission(search);
+        return newMission;
+    }
 }

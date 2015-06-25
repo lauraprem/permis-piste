@@ -2,6 +2,8 @@ package com.epul.service.impl;
 
 import java.util.List;
 
+import com.epul.Utils.Util;
+import com.epul.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,13 @@ public class MissionServiceImpl implements IMissionService{
 	public List<Fixe> getMissionsObjectif(int idMission) {
 		return missionDao.missionObjectif(idMission);
 	}
-	
-	 
-	
+
+    @Override
+    public List<Mission> searchMission(String search) {
+        if (Util.isInteger(search)) {
+            int s = Integer.valueOf(search);
+            return missionDao.searchMission(s, s, "%" + search + "%");
+        }
+        return missionDao.searchMission("%" + search + "%");
+    }
 }
