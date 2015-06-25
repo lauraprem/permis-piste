@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.epul.Utils.Util;
 import com.epul.model.Apprenant;
 import com.epul.repository.IApprenantDao;
 import com.epul.service.IApprenantService;
@@ -41,7 +42,17 @@ public class ApprenantServiceImpl implements IApprenantService {
 
 	@Override
 	public void modifyApprenant(Apprenant apprenant) {
-		apprenantDAO.modifyApprenant(apprenant.getNomapprenant(), apprenant.getPrenomapprenant(), apprenant.getNumapprenant());
+		apprenantDAO.save(apprenant);
+//		apprenantDAO.modifyApprenant(apprenant.getNomapprenant(), apprenant.getPrenomapprenant(), apprenant.getNumapprenant());
+	}
+
+	@Override
+	public List<Apprenant> searchApprenant(String search) {
+		 if (Util.isInteger(search)) {
+	            int s = Integer.valueOf(search);
+	            return apprenantDAO.searchApprenant(s, search, search);
+	        }
+	        return apprenantDAO.searchApprenant(search,search);
 	}
 	
 	

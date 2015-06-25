@@ -81,4 +81,12 @@ public class ApprenantController {
 	public void modifyApprenant(@RequestBody Apprenant apprenant){
 		apprenantService.modifyApprenant(apprenant);
 	}
+	
+    @RequestMapping(value = "/Search/{search}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Apprenant> searchAction(@PathVariable String search){
+        List<Apprenant> newApprenant = apprenantService.searchApprenant(search);
+        return newApprenant;
+    }
 }

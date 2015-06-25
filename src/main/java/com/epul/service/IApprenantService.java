@@ -35,4 +35,6 @@ public interface IApprenantService {
 	
 	public void modifyApprenant(Apprenant apprenant);
 	
+	List<Apprenant> searchApprenant(String search);
+	
 }
