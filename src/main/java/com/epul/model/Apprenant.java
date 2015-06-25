@@ -19,7 +19,7 @@ public class Apprenant {
 
     @Id
     @Column(name = "NUMAPPRENANT")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getNumapprenant() {
         return numapprenant;
     }

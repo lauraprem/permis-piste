@@ -62,9 +62,9 @@ public class ApprenantController {
 	 * @param apprenant a ajouter
 	 * @return true si l'ajout a fonctioné false sinon
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.POST ,  produces ={"application/json"}, consumes = {"application/json"})
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
+	@ResponseStatus(HttpStatus.CREATED)
 	public void addApprenant(@RequestBody Apprenant apprenant){
 		apprenantService.addApprenant(apprenant);
 	}
