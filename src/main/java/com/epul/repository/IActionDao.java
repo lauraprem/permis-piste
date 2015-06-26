@@ -17,8 +17,8 @@ import com.epul.model.Action;
 public interface IActionDao extends JpaRepository<Action,Integer> {
     @Transactional
     @Modifying
-    @Query("UPDATE Action set  ACTNUMACTION = :actnumaction, LIBACTION = :lib, SCOREMIN = :scoremin where NUMACTION = :id")
-    public void modifyAction(@Param("actnumaction") int numaction , @Param("lib") String lib, @Param("scoremin") int scoremin,@Param("id") int id);
+    @Query("UPDATE Action set  ACT_NUMACTION = :act_numaction, LIBACTION = :lib, SCOREMIN = :scoremin where NUMACTION = :id")
+    public void modifyAction(@Param("act_numaction") int act_numaction , @Param("lib") String lib, @Param("scoremin") int scoremin,@Param("id") int id);
 
     @Transactional
     @Modifying
@@ -30,4 +30,7 @@ public interface IActionDao extends JpaRepository<Action,Integer> {
 
     @Query("FROM Action WHERE LIBACTION= :libaction ")
     public List<Action> searchAction( @Param("libaction") String libindic);
+    
+    @Query("FROM Action WHERE ACT_NUMACTION= :act_numAction ")
+    public List<Action> getActNumAction( @Param("act_numAction") int act_numAction);
 }

@@ -9,4 +9,6 @@ public interface IEstAssocieService {
     boolean addEstAssocie(EstAssocie association);
 
     boolean suppressEstAssocie(EstAssocie association);
+    
+    EstAssocie findEstAssocie(int id);
 }
