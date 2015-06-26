@@ -25,10 +25,10 @@ public class EstAssocieController {
         return estAssocieService.addEstAssocie(estAssocie);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces={"application/json"})
+    @RequestMapping(value = "/", method = RequestMethod.DELETE, produces={"application/json"})
     @ResponseBody
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean suppressAction(@PathVariable int id){
-        return estAssocieService.suppressEstAssocie(id);
+    public boolean suppressAction(@RequestBody EstAssocie estAssocie){
+        return estAssocieService.suppressEstAssocie(estAssocie);
     }
 }

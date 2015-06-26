@@ -21,8 +21,8 @@ public class EstAssocieImpl implements IEstAssocieService {
     }
 
     @Override
-    public boolean suppressEstAssocie(int id) {
-        estAssocieDao.delete(id);
+    public boolean suppressEstAssocie(EstAssocie association) {
+        estAssocieDao.delete(association);
         return true;
     }
 }

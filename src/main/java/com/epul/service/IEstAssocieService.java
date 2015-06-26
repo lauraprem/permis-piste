@@ -8,5 +8,5 @@ import com.epul.model.EstAssocie;
 public interface IEstAssocieService {
     boolean addEstAssocie(EstAssocie association);
 
-    boolean suppressEstAssocie(int id);
+    boolean suppressEstAssocie(EstAssocie association);
 }
