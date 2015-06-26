@@ -71,7 +71,7 @@ public class JeuController {
      * @param jeu le jeu modifié
      * @return true si a modification a eu lieu, false sinon
      */
-    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public boolean modifyJeu(@RequestBody Jeu jeu){

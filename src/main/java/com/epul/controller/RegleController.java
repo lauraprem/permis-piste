@@ -84,7 +84,7 @@ public class RegleController {
      * @param regle l'apprenant modifié
      * @return true si a modification a eu lieu, false sinon
      */
-    @RequestMapping(value="/", method = RequestMethod.PUT, produces ={"application/json"})
+    @RequestMapping(value="/{id}", method = RequestMethod.PUT, produces ={"application/json"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public boolean modifyRegle(@RequestBody Regle regle){

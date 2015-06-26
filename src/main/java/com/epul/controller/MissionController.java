@@ -16,7 +16,14 @@ import com.epul.service.IMissionService;
 public class MissionController {
 	@Autowired
 	private IMissionService missionService;
-	
+
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces ={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<Mission> getAllIndicateur() {
+        return missionService.getAllMission();
+    }
+
     @RequestMapping(value = "/{idMission}/Objectif", method = RequestMethod.GET, produces ={"application/json"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
@@ -24,11 +31,6 @@ public class MissionController {
     	return missionService.getMissionsObjectif(idMission);
     }
 
-    /**
-     * Search of an iteration
-     * @param search it's an attribute of the search
-     * @return the wanted iteration
-     */
     @RequestMapping(value = "/Search/{search}", method = RequestMethod.GET, produces={"application/json"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
@@ -51,7 +53,7 @@ public class MissionController {
         return missionService.addMission(mission);
     }
 
-    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public boolean modifyMission(@RequestBody Mission mission) {

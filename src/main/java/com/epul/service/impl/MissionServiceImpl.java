@@ -32,6 +32,11 @@ public class MissionServiceImpl implements IMissionService{
     }
 
     @Override
+    public List<Mission> getAllMission() {
+        return missionDao.findAll();
+    }
+
+    @Override
     public boolean suppressMission(int id) {
         missionDao.delete(id);
         return true;

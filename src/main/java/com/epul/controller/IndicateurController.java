@@ -87,7 +87,7 @@ public class IndicateurController {
      * @param indicateur l'indicateur modifié
      * @return true si a modification a eu lieu, false sinon
      */
-    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public boolean modifyIndicateur(@RequestBody Indicateur indicateur){

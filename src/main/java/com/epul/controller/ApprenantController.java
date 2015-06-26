@@ -75,7 +75,7 @@ public class ApprenantController {
 	 * @param apprenant l'apprenant modifié
 	 * @return true si a modification a eu lieu, false sinon
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.PUT ,  produces ={"application/json"} ,consumes = {"application/json"})
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT ,  produces ={"application/json"} ,consumes = {"application/json"})
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public void modifyApprenant(@RequestBody Apprenant apprenant){

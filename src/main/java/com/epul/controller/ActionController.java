@@ -77,10 +77,11 @@ public class ActionController {
      * @param action l'action modifié
      * @return true si a modification a eu lieu, false sinon
      */
-    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
      @ResponseBody
      @ResponseStatus(HttpStatus.OK)
      public boolean modifyAction(@RequestBody Action action){
+
         return actionService.modifyAction(action);
     }
     

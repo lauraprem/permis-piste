@@ -42,7 +42,12 @@ public class ActionServiceImpl implements IActionService{
 
     @Override
     public boolean modifyAction(Action action) {
-        actionDao.modifyAction(action.getActNumaction(), action.getLibaction(), action.getScoremin(), action.getNumaction());
+        if(action.getActNumaction() == null){
+            actionDao.modifyAction(action.getLibaction(), action.getScoremin(), action.getNumaction());
+        }
+        else{
+            actionDao.modifyAction(action.getActNumaction(), action.getLibaction(), action.getScoremin(), action.getNumaction());
+        }
         return true;
     }
 
