@@ -9,8 +9,10 @@ import com.epul.Utils.Util;
 import com.epul.model.Appartient;
 import com.epul.model.Jeu;
 import com.epul.model.Mission;
+import com.epul.model.Obtient;
 import com.epul.repository.IAppartientDao;
 import com.epul.repository.IJeuDao;
+import com.epul.repository.IObtientDao;
 import com.epul.service.IJeuService;
 import com.epul.service.IMissionService;
 
@@ -25,6 +27,8 @@ public class JeuServiceImpl implements IJeuService{
     private IMissionService missionService;
     @Autowired
     private IAppartientDao appartientDao;
+    @Autowired
+    private IObtientDao obtientDao;
 
     @Override
     public List<Jeu> getAllJeu() {
@@ -40,11 +44,15 @@ public class JeuServiceImpl implements IJeuService{
     public boolean suppressJeu(int id) {
     	List<Mission> missions = missionService.getMissionFromJeu(id);
     	List<Appartient> appartients = appartientDao.getAppartientFromJeu(id);
+    	List<Obtient> obtients = obtientDao.getObtientFromJeu(id);
     	for(Mission m : missions){
     		missionService.suppressMission(m.getNummission());
     	}
     	for(Appartient a : appartients){
     		appartientDao.delete(a);
+    	}
+    	for(Obtient o : obtients){
+    		obtientDao.delete(o);
     	}
         jeuDao.delete(id);
         return true;

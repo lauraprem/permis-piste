@@ -18,4 +18,7 @@ public interface IObtientDao extends JpaRepository<Obtient, Integer> {
 	    
 	    @Query("FROM Obtient WHERE NUMAPRENANT= :numapprenant ")
 	    public List<Obtient> getObtientFromApprenant(@Param("numapprenant") int numapprenant);
+	    
+	    @Query("FROM Obtient WHERE IDJEU= :idJeu ")
+	    public List<Obtient> getObtientFromJeu(@Param("idJeu") int idJeu);
 }
