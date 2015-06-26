@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.epul.Utils.Util;
 import com.epul.model.Apprenant;
+import com.epul.model.Obtient;
 import com.epul.repository.IApprenantDao;
+import com.epul.repository.IObtientDao;
 import com.epul.service.IApprenantService;
 
 @Service
@@ -15,10 +17,8 @@ public class ApprenantServiceImpl implements IApprenantService {
 
 	@Autowired
 	private IApprenantDao apprenantDAO;
-
-	public void setApprenantDAO(IApprenantDao apprenantDAO) {
-		this.apprenantDAO = apprenantDAO;
-	}
+	@Autowired
+	private IObtientDao obtientDao;
 
 	@Override
 	public List<Apprenant> getAllApprenant() {
@@ -32,6 +32,10 @@ public class ApprenantServiceImpl implements IApprenantService {
 
 	@Override
 	public void suppressApprenant(int id) {
+		List<Obtient> obtients = obtientDao.getObtientFromApprenant(id);
+		for(Obtient o : obtients){
+			obtientDao.delete(o);
+		}
 		 apprenantDAO.delete(id);
 	}
 

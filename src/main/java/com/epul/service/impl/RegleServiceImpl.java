@@ -2,13 +2,13 @@ package com.epul.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
-import com.epul.Utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.epul.Utils.Util;
+import com.epul.model.Possede;
 import com.epul.model.Regle;
+import com.epul.repository.IPossedeDao;
 import com.epul.repository.IRegleDao;
 import com.epul.service.IRegleService;
 
@@ -20,6 +20,8 @@ public class RegleServiceImpl implements IRegleService {
 
     @Autowired
     private IRegleDao regleDao;
+    @Autowired
+    private IPossedeDao possedeDao;
 
     @Override
     public List<Regle> getAllRegle() {
@@ -33,6 +35,10 @@ public class RegleServiceImpl implements IRegleService {
 
     @Override
     public boolean suppressRegle(int id) {
+    	List<Possede> possedes = possedeDao.getPossedeFromRegle(id);
+    	for(Possede p : possedes){
+    		possedeDao.delete(p);
+    	}
         regleDao.delete(id);
         return true;
     }
