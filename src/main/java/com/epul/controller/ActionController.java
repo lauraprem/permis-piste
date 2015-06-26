@@ -81,7 +81,6 @@ public class ActionController {
      @ResponseBody
      @ResponseStatus(HttpStatus.OK)
      public boolean modifyAction(@RequestBody Action action){
-
         return actionService.modifyAction(action);
     }
     

@@ -14,6 +14,10 @@ import javax.persistence.Id;
 public class Calendrier {
     private Date datejour;
 
+    public Calendrier(Date datejour) {
+        this.datejour = datejour;
+    }
+
     @Id
     @Column(name = "DATEJOUR")
     public Date getDatejour() {
