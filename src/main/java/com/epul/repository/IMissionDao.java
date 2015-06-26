@@ -2,6 +2,8 @@ package com.epul.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -9,8 +11,6 @@ import org.springframework.data.repository.query.Param;
 
 import com.epul.model.Fixe;
 import com.epul.model.Mission;
-
-import javax.transaction.Transactional;
 
 public interface IMissionDao extends JpaRepository<Mission, Integer> {
     @Query("FROM Fixe AS f, Mission as m, Objectif AS o WHERE o.numobjectif = f.numobjectif AND m.nummission = f.nummission AND m.nummission = :idmission")
@@ -27,5 +27,6 @@ public interface IMissionDao extends JpaRepository<Mission, Integer> {
     @Query("UPDATE Mission set  LIBMISSION = :libmission where NUMMISSION = :id")
     public void modifyMission(@Param("libmission") String libmission , @Param("id") int id);
 
-
+    @Query("FROM Mission WHERE NUMJEU LIKE :numjeu")
+    public List<Mission> getMissionFromJeu( @Param("numjeu") int numjeu);
 }

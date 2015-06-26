@@ -1,12 +1,17 @@
 package com.epul.service.impl;
 
-import com.epul.model.Jeu;
-import com.epul.repository.IJeuDao;
-import com.epul.service.IJeuService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.epul.model.Appartient;
+import com.epul.model.Jeu;
+import com.epul.model.Mission;
+import com.epul.repository.IAppartientDao;
+import com.epul.repository.IJeuDao;
+import com.epul.service.IJeuService;
+import com.epul.service.IMissionService;
 
 /**
  * Created by Pierre on 13/06/2015.
@@ -15,6 +20,10 @@ import java.util.List;
 public class JeuServiceImpl implements IJeuService{
     @Autowired
     private IJeuDao jeuDao;
+    @Autowired
+    private IMissionService missionService;
+    @Autowired
+    private IAppartientDao appartientDao;
 
     @Override
     public List<Jeu> getAllJeu() {
@@ -28,6 +37,14 @@ public class JeuServiceImpl implements IJeuService{
 
     @Override
     public boolean suppressJeu(int id) {
+    	List<Mission> missions = missionService.getMissionFromJeu(id);
+    	List<Appartient> appartients = appartientDao.getAppartientFromJeu(id);
+    	for(Mission m : missions){
+    		missionService.suppressMission(m.getNummission());
+    	}
+    	for(Appartient a : appartients){
+    		appartientDao.delete(a);
+    	}
         jeuDao.delete(id);
         return true;
     }

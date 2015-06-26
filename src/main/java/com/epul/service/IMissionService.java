@@ -20,5 +20,7 @@ public interface IMissionService {
     public boolean addMission(Mission mission);
 
     public boolean modifyMission(Mission mission);
+    
+    public List<Mission> getMissionFromJeu(int idJeu);
 
 }

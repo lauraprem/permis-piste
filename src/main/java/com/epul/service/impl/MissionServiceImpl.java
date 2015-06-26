@@ -2,12 +2,13 @@ package com.epul.service.impl;
 
 import java.util.List;
 
-import com.epul.Utils.Util;
-import com.epul.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.epul.Utils.Util;
 import com.epul.model.Fixe;
+import com.epul.model.Mission;
+import com.epul.repository.IFixeDao;
 import com.epul.repository.IMissionDao;
 import com.epul.service.IMissionService;
 
@@ -16,6 +17,8 @@ public class MissionServiceImpl implements IMissionService{
 
 	@Autowired
 	private IMissionDao missionDao;
+	@Autowired
+	private IFixeDao fixeDao;
 
 	@Override
 	public List<Fixe> getMissionsObjectif(int idMission) {
@@ -43,6 +46,10 @@ public class MissionServiceImpl implements IMissionService{
 
     @Override
     public boolean suppressMission(int id) {
+    	List<Fixe> fixes = fixeDao.getFixeFromMission(id);
+    	for(Fixe f : fixes){
+    		fixeDao.delete(f);
+    	}
         missionDao.delete(id);
         return true;
     }
@@ -58,4 +65,11 @@ public class MissionServiceImpl implements IMissionService{
         missionDao.modifyMission(mission.getLibmission(), mission.getNumjeu());
         return true;
     }
+
+	@Override
+	public List<Mission> getMissionFromJeu(int idJeu) {
+		return missionDao.getMissionFromJeu(idJeu);
+	}
+    
+    
 }
