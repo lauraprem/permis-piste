@@ -20,8 +20,15 @@ public class MissionController {
     @RequestMapping(value = "/", method = RequestMethod.GET, produces ={"application/json"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public List<Mission> getAllIndicateur() {
+    public List<Mission> getAllMission() {
         return missionService.getAllMission();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public Mission getIndicateur(@PathVariable int id){
+        return missionService.getMission(id);
     }
 
     @RequestMapping(value = "/{idMission}/Objectif", method = RequestMethod.GET, produces ={"application/json"})

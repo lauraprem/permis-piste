@@ -13,6 +13,8 @@ public interface IMissionService {
 
     public List<Mission> getAllMission();
 
+    Mission getMission(int id);
+
     public boolean suppressMission(int id);
 
     public boolean addMission(Mission mission);
