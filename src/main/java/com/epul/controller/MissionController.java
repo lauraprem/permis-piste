@@ -6,11 +6,7 @@ import com.epul.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import com.epul.model.Fixe;
 import com.epul.service.IMissionService;
@@ -39,5 +35,26 @@ public class MissionController {
     public List<Mission> searchIndicateur(@PathVariable String search){
         List<Mission> newMission = missionService.searchMission(search);
         return newMission;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces={"application/json"})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean suppressMission(@PathVariable int id){
+        return missionService.suppressMission(id);
+    }
+
+    @RequestMapping(value="/", method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean addMission(@RequestBody Mission mission){
+        return missionService.addMission(mission);
+    }
+
+    @RequestMapping(value="/", method = RequestMethod.PUT)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public boolean modifyMission(@RequestBody Mission mission) {
+        return missionService.modifyMission(mission);
     }
 }

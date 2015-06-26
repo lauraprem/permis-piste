@@ -30,4 +30,22 @@ public class MissionServiceImpl implements IMissionService{
         }
         return missionDao.searchMission("%" + search + "%");
     }
+
+    @Override
+    public boolean suppressMission(int id) {
+        missionDao.delete(id);
+        return true;
+    }
+
+    @Override
+    public boolean addMission(Mission mission) {
+        missionDao.save(mission);
+        return true;
+    }
+
+    @Override
+    public boolean modifyMission(Mission mission) {
+        missionDao.modifyMission(mission.getLibmission(), mission.getNumjeu());
+        return true;
+    }
 }

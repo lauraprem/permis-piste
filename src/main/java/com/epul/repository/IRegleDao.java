@@ -20,7 +20,6 @@ public interface IRegleDao extends JpaRepository<Regle,Integer> {
     @Query("FROM Regle as r, Possede as p WHERE p.numaction= :numaction AND p.numregle = r.numregle")
     public List<Regle> getRegleForAction(@Param("numaction") int numAction);
 
-	
 	@Transactional
 	@Modifying
     @Query("UPDATE Regle as r set  LIBREGLE = :lib, SCOREMIN = :scoremin where NUMREGLE = :id")

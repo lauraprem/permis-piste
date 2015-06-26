@@ -11,4 +11,10 @@ public interface IMissionService {
 
     public List<Mission> searchMission(String search);
 
+    public boolean suppressMission(int id);
+
+    public boolean addMission(Mission mission);
+
+    public boolean modifyMission(Mission mission);
+
 }
