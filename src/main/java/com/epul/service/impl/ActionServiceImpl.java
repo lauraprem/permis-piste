@@ -99,9 +99,9 @@ public class ActionServiceImpl implements IActionService {
 	public List<Action> searchAction(String search) {
 		if (Util.isInteger(search)) {
 			int s = Integer.valueOf(search);
-			return actionDao.searchAction(s, s, search, s);
+			return actionDao.searchAction(s, s, "%" + search + "%", s);
 		}
-		return actionDao.searchAction(search);
+		return actionDao.searchAction("%" + search + "%");
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.epul.Utils.Util;
 import com.epul.model.Appartient;
 import com.epul.model.Jeu;
 import com.epul.model.Mission;
@@ -60,4 +61,15 @@ public class JeuServiceImpl implements IJeuService{
         jeuDao.modifyJeu(jeu.getLibellejeu(), jeu.getNumjeu());
         return true;
     }
+
+	@Override
+	public List<Jeu> searchJeu(String search) {
+		   if (Util.isInteger(search)) {
+	            int s = Integer.valueOf(search);
+	            return jeuDao.searchJeu(s, "%" + search + "%");
+	        }
+	        return jeuDao.searchJeu("%" + search + "%");
+	}
+    
+    
 }

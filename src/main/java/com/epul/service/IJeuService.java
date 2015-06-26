@@ -1,8 +1,8 @@
 package com.epul.service;
 
-import com.epul.model.Jeu;
-
 import java.util.List;
+
+import com.epul.model.Jeu;
 
 /**
  * Created by Pierre on 13/06/2015.
@@ -42,4 +42,6 @@ public interface IJeuService {
      * @return true si a modification a eu lieu, false sinon
      */
     public boolean modifyJeu(Jeu jeu);
+    
+    public List<Jeu> searchJeu(String search);
 }

@@ -1,13 +1,14 @@
 package com.epul.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.epul.Utils.Util;
 import com.epul.model.Indicateur;
 import com.epul.repository.IIndicateurDao;
 import com.epul.service.IIndicateurService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Created by Pierre on 13/06/2015.
@@ -53,8 +54,8 @@ public class IndicateurServiceImpl implements IIndicateurService {
     public List<Indicateur> searchIndicateur(String search) {
         if (Util.isInteger(search)) {
             int s = Integer.valueOf(search);
-            return indicateurDao.searchIndicateur(s, s, search, s);
+            return indicateurDao.searchIndicateur(s, s, "%" + search + "%", s);
         }
-        return indicateurDao.searchIndicateur(search);
+        return indicateurDao.searchIndicateur("%" + search + "%");
     }
 }

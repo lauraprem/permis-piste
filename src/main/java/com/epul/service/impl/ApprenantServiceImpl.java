@@ -54,9 +54,9 @@ public class ApprenantServiceImpl implements IApprenantService {
 	public List<Apprenant> searchApprenant(String search) {
 		 if (Util.isInteger(search)) {
 	            int s = Integer.valueOf(search);
-	            return apprenantDAO.searchApprenant(s, search, search);
+	            return apprenantDAO.searchApprenant(s, "%" + search + "%", "%" + search + "%");
 	        }
-	        return apprenantDAO.searchApprenant(search,search);
+	        return apprenantDAO.searchApprenant("%" + search + "%","%" + search + "%");
 	}
 	
 	
