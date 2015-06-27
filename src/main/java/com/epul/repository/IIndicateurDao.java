@@ -13,10 +13,10 @@ import java.util.List;
  * Created by Pierre on 13/06/2015.
  */
 public interface IIndicateurDao extends JpaRepository<Indicateur, Integer> {
-    @Query("FROM Indicateur WHERE NUMINDIC= :numindic OR NUMACTION= :numaction OR LIBINDIC= :libindic OR POIDS= :poids")
+    @Query("FROM Indicateur WHERE NUMINDIC= :numindic OR NUMACTION= :numaction OR LIBINDIC LIKE :libindic OR POIDS= :poids")
     public List<Indicateur> searchIndicateur(@Param("numindic") int numindic, @Param("numaction") int numaction, @Param("libindic") String libindic, @Param ("poids") int poids);
 
-    @Query("FROM Indicateur WHERE LIBINDIC= :libindic ")
+    @Query("FROM Indicateur WHERE LIBINDIC LIKE :libindic ")
     public List<Indicateur> searchIndicateur( @Param("libindic") String libindic);
 
     @Query("FROM Indicateur WHERE NUMACTION= :numaction")

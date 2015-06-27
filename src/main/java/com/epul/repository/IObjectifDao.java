@@ -23,7 +23,7 @@ public interface IObjectifDao extends JpaRepository<Objectif, Integer>{
     @Query("FROM EstAssocie as e, Action as a, Objectif as o WHERE e.numobjectif = o.numobjectif AND e.numaction = a.numaction AND o.numobjectif = :id")
     public List<EstAssocie> getActionForOneObjectif(@Param("id") int id);
 
-    @Query("FROM Objectif WHERE NUMOBJECTIF= :numobjectif OR LIBOBJECTIF= :libobjectif")
+    @Query("FROM Objectif WHERE NUMOBJECTIF= :numobjectif OR LIBOBJECTIF LIKE :libobjectif")
     public List<Objectif> searchObjectif(@Param("numobjectif") int nummission, @Param("libobjectif") String libobjectif);
 
     @Query("FROM Objectif WHERE LIBOBJECTIF LIKE :libobjectif")

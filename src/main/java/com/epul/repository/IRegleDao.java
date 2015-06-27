@@ -25,7 +25,7 @@ public interface IRegleDao extends JpaRepository<Regle,Integer> {
     @Query("UPDATE Regle as r set  LIBREGLE = :lib, SCOREMIN = :scoremin where NUMREGLE = :id")
     public void modifyRegle( @Param("lib") String lib,@Param("scoremin") int scoremin,@Param("id") int id);
 
-    @Query("FROM Regle WHERE NUMREGLE= :numregle OR LIBREGLE= :libregle OR SCOREMIN= :scoremin ")
+    @Query("FROM Regle WHERE NUMREGLE= :numregle OR LIBREGLE LIKE :libregle OR SCOREMIN= :scoremin ")
     public List<Regle> searchRegle(@Param("numregle") int numregle, @Param("libregle") String libregle, @Param("scoremin") int scoremin);
 
     @Query("FROM Regle WHERE LIBREGLE LIKE :libregle")

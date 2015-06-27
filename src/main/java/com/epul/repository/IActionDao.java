@@ -25,10 +25,10 @@ public interface IActionDao extends JpaRepository<Action,Integer> {
     @Query("UPDATE Action set LIBACTION = :lib, SCOREMIN = :scoremin where NUMACTION = :id")
     public void modifyAction(@Param("lib") String lib, @Param("scoremin") int scoremin,@Param("id") int id);
     
-    @Query("FROM Action WHERE NUMACTION= :numaction OR ACT_NUMACTION= :act_numaction OR LIBACTION= :libaction OR SCOREMIN= :scoremin")
+    @Query("FROM Action WHERE NUMACTION= :numaction OR ACT_NUMACTION= :act_numaction OR LIBACTION LIKE :libaction OR SCOREMIN= :scoremin")
     public List<Action> searchAction(@Param("numaction") int numaction, @Param("act_numaction") int act_numaction, @Param("libaction") String libaction, @Param ("scoremin") int scoremin);
 
-    @Query("FROM Action WHERE LIBACTION= :libaction ")
+    @Query("FROM Action WHERE LIBACTION LIKE :libaction ")
     public List<Action> searchAction( @Param("libaction") String libindic);
     
     @Query("FROM Action WHERE ACT_NUMACTION= :act_numAction ")

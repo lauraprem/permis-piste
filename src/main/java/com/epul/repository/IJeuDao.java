@@ -20,10 +20,10 @@ public interface IJeuDao extends JpaRepository<Jeu,Integer> {
     @Query("UPDATE Jeu set LIBELLE = :lib where NUMJEU = :id")
     public void modifyJeu(@Param("lib") String libelle, @Param("id") int id);
     
-    @Query("FROM Jeu WHERE NUMJEU= :numjeu OR LIBELLEJEU= :libellejeu ")
+    @Query("FROM Jeu WHERE NUMJEU= :numjeu OR LIBELLEJEU LIKE :libellejeu ")
     public List<Jeu> searchJeu(@Param("numjeu") int numjeu, @Param("libellejeu") String libellejeu);
 
-    @Query("FROM Jeu WHERE LIBELLEJEU= :libellejeu ")
+    @Query("FROM Jeu WHERE LIBELLEJEU LIKE :libellejeu ")
     public List<Jeu> searchJeu( @Param("libellejeu") String libellejeu);
 
 }

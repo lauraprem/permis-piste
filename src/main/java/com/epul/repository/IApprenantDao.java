@@ -17,10 +17,10 @@ public interface IApprenantDao extends JpaRepository<Apprenant,Integer> {
     @Query("UPDATE Apprenant set NOMAPPRENANT = :nom, PRENOMAPPRENANT = :prenom where NUMAPPRENANT = :id")
     public void modifyApprenant(@Param("nom") String nom , @Param("prenom") String prenom, @Param("id") int id);
     
-    @Query("FROM Apprenant WHERE NUMAPPRENANT= :numapprenant OR NOMAPPRENANT= :nomapprenant OR PRENOMAPPRENANT= :prenomapprenant ")
+    @Query("FROM Apprenant WHERE NUMAPPRENANT= :numapprenant OR NOMAPPRENANT LIKE :nomapprenant OR PRENOMAPPRENANT LIKE :prenomapprenant ")
     public List<Apprenant> searchApprenant(@Param("numapprenant") int numapprenant, @Param("nomapprenant") String nomapprenant, @Param("prenomapprenant") String prenomapprenant);
 
-    @Query("FROM Apprenant WHERE NOMAPPRENANT= :nomapprenant OR PRENOMAPPRENANT= :prenomapprenant ")
+    @Query("FROM Apprenant WHERE NOMAPPRENANT LIKE :nomapprenant OR PRENOMAPPRENANT LIKE :prenomapprenant ")
     public List<Apprenant> searchApprenant(@Param("nomapprenant") String nomapprenant, @Param("prenomapprenant") String prenomapprenant);
 
 }
