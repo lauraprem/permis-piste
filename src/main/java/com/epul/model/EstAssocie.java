@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * Created by Pierre on 03/06/2015.
  */
 @Entity
-@Table(name = "est_associe", schema = "", catalog = "permispiste")
+@Table(name = "Est_associe", schema = "", catalog = "permispiste")
 @IdClass(EstAssociePK.class)
 public class EstAssocie {
     private int numaction;
