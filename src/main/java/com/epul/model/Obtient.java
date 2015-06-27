@@ -15,6 +15,7 @@ public class Obtient {
     private int numapprenant;
     private String datejour;
     private int numaction;
+    private int idjeu;
     private Integer valeurdebut;
     private Integer valeurfin;
 
@@ -26,6 +27,16 @@ public class Obtient {
 
     public void setNumapprenant(int numapprenant) {
         this.numapprenant = numapprenant;
+    }
+
+    @Id
+    @Column(name = "IDJEU")
+    public int getIdjeu(){
+        return idjeu;
+    }
+
+    public void setIdjeu(int idjeu){
+        this.idjeu = idjeu;
     }
 
     @Id

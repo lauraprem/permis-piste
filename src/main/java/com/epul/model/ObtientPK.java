@@ -12,8 +12,8 @@ import javax.persistence.Id;
  */
 public class ObtientPK implements Serializable {
     private int numapprenant;
-    private Date datejour;
     private int numaction;
+    private int idjeu;
 
     @Column(name = "NUMAPPRENANT")
     @Id
@@ -23,16 +23,6 @@ public class ObtientPK implements Serializable {
 
     public void setNumapprenant(int numapprenant) {
         this.numapprenant = numapprenant;
-    }
-
-    @Column(name = "DATEJOUR")
-    @Id
-    public Date getDatejour() {
-        return datejour;
-    }
-
-    public void setDatejour(Date datejour) {
-        this.datejour = datejour;
     }
 
     @Column(name = "NUMACTION")
@@ -45,6 +35,16 @@ public class ObtientPK implements Serializable {
         this.numaction = numaction;
     }
 
+    @Column(name = "IDJEU")
+    @Id
+    public int getIdjeu(){
+        return this.idjeu;
+    }
+
+    public void setIdjeu(int idjeu){
+        this.idjeu = idjeu;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,7 +54,6 @@ public class ObtientPK implements Serializable {
 
         if (numapprenant != obtientPK.numapprenant) return false;
         if (numaction != obtientPK.numaction) return false;
-        if (datejour != null ? !datejour.equals(obtientPK.datejour) : obtientPK.datejour != null) return false;
 
         return true;
     }
@@ -62,7 +61,6 @@ public class ObtientPK implements Serializable {
     @Override
     public int hashCode() {
         int result = numapprenant;
-        result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
         result = 31 * result + numaction;
         return result;
     }
