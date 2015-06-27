@@ -1,7 +1,5 @@
 package com.epul.model;
 
-import java.sql.Date;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +13,7 @@ import javax.persistence.IdClass;
 @IdClass(ObtientPK.class)
 public class Obtient {
     private int numapprenant;
-    private Date datejour;
+    private String datejour;
     private int numaction;
     private Integer valeurdebut;
     private Integer valeurfin;
@@ -32,11 +30,11 @@ public class Obtient {
 
     @Id
     @Column(name = "DATEJOUR")
-    public Date getDatejour() {
+    public String getDatejour() {
         return datejour;
     }
 
-    public void setDatejour(Date datejour) {
+    public void setDatejour(String datejour) {
         this.datejour = datejour;
     }
 

@@ -23,6 +23,7 @@ public class ObtientServiceImpl implements IObtientService {
     @Override
     public boolean addObtient(Obtient obtient) {
         obtientDao.save(obtient);
+        //obtientDao.addObtient(obtient.getNumapprenant(), 1, obtient.getDatejour().toString(), obtient.getNumaction(), obtient.getValeurdebut(), obtient.getValeurfin());
         return true;
     }
 }
